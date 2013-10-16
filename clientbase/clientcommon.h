@@ -45,7 +45,7 @@ typedef	int Socket;
 typedef struct st_FrameHeader
 {
 	unsigned char	MD5Hash[16];
-	char			AppFlag[8];
+	char		AppFlag[8];
 	unsigned int	DataLength;
 	unsigned int	Type;
 

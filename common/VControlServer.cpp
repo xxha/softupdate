@@ -1,7 +1,7 @@
 /*****************************************************************************************
 ** VControlServer.cpp: 供外部程序启动或停止服务,控制服务运行
 ** 流程: 1,外部程序通过调用VControlServer.cpp的StartCommonServer()函数,来启动监听服务.
-**		 2,创建一个新的线程,来启动TCP监听.
+**	 2,创建一个新的线程,来启动TCP监听.
 **       3,有远程IP请求连接,则创建新的线程,并新建一个CCommonServer的实例对象,将Socket对象传入.
 **       4,CCommonServer的实例对象与远程建立连接并进行交互.
 **
@@ -12,34 +12,28 @@
 **
 ** Create date: 05-04-2012
 *****************************************************************************************/
-//qflJsH4L Pass			//qflJsH4L 12 0 2		//54
-//rp8Vem5d				//rp8Vem5d 12 0 3       //251
-//vzpQGvqd 128 0 			//54
-
 
 #include <netinet/in.h>					// for sockaddr_in 
 #include <sys/types.h>					// for socket 
 #include <sys/socket.h>					// for socket 
 #include <sys/select.h>
 #include <sys/time.h>
-#include <stdio.h>						// for printf 
-#include <stdlib.h>						// for exit 
-#include <string.h>						// for bzero 
-#include <stdarg.h>						//va_start,va_list
+#include <stdio.h>					// for printf 
+#include <stdlib.h>					// for exit 
+#include <string.h>					// for bzero 
+#include <stdarg.h>					//va_start,va_list
 #include <pthread.h>					//pthread_t,pthread_exit,pthread_create
 #include <arpa/inet.h>
-#include <unistd.h>						//sleep()
+#include <unistd.h>					//sleep()
 #include <sys/stat.h> 
-#include <dirent.h>						//DIR
+#include <dirent.h>					//DIR
 #include <fcntl.h> 
-#include <ctype.h>						//isalnum
+#include <ctype.h>					//isalnum
 #include "macro.h"
 #include "CommonServer.h"
 #include "../v400eeprom/v400eeprom.h"
 #include "../clientbase/md5checksum.h"
 #include <ftdi.h>
-
-//40g
 
 #define	UX400VENDOR	0x0403
 #define	UX400PRODUCT	0x6010
@@ -52,12 +46,9 @@
 
 struct ftdi_context ux400_ftdic;
 unsigned char eeprom[EEPROM_SIZE];
-//unsigned char TEST[EEPROM_SIZE];
 char testSN[256] = {'\0'};
 
-//end
-
-pthread_t threadHandleListen;						//服务端用来监听的线程
+pthread_t threadHandleListen;					//服务端用来监听的线程
 pthread_t threadHandleBroadcastListen;				//服务端用来接收广播监听的线程
 bool StopAll = false;
 
@@ -66,7 +57,6 @@ char g_szArg_netif[64] = "";
 int  g_iArg_srvport    = 8023;
 char g_szArg_optfile[256] = "";
 struct sockaddr_in g_inAddrServer;
-//int g_moduleBufSize = 4096;
 int g_iServerTCPPort = SERVER_TCP_PORT;
 int g_iServerUDPPort = SERVER_UDP_PORT;
 

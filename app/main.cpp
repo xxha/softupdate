@@ -29,7 +29,6 @@ void Usage(char *pName )
 		
 	printf("\n  Invalid argument(s)\n\n");
 	printf("  Usage:\n");
-	//printf("       %s AppName:\n\n", pName);
 	printf("       %s AppName [debug [TCP_PORT [UDP_PORT]]]\n\n", pName);
 	printf("	   eg:./softupdate ux400\n");
 	printf("	        ./softupdate ux400 debug\n");
@@ -51,7 +50,7 @@ int main(int argc, char* argv[])
 	if(argc >= 2)
 	{
 		mymemset( g_szAppName, 0, MAX_DIR_LEN );
-		//Save the application name
+		/* Save the application name */
 		sprintf( g_szAppName, "%s\0", argv[1] );	  
 	}
 
@@ -117,4 +116,3 @@ int main(int argc, char* argv[])
 	printf("Softupdate server exit...\n");
 	return 0;
 }
-
