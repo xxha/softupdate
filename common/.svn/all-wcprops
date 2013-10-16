@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnrepos/v400/!svn/ver/1931/trunk/v300/softupdate/common
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnrepos/v400/!svn/ver/729/trunk/v300/softupdate/common/Makefile
+END
+VControlServer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepos/v400/!svn/ver/1829/trunk/v300/softupdate/common/VControlServer.cpp
+END
+CommonServer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnrepos/v400/!svn/ver/1931/trunk/v300/softupdate/common/CommonServer.cpp
+END
+SingleService.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/common/SingleService.cpp
+END
+CommonServer.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnrepos/v400/!svn/ver/675/trunk/v300/softupdate/common/CommonServer.h
+END
+macro.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnrepos/v400/!svn/ver/1931/trunk/v300/softupdate/common/macro.h
+END
+SingleService.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/common/SingleService.h
+END

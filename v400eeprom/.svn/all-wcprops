@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnrepos/v400/!svn/ver/1829/trunk/v300/softupdate/v400eeprom
+END
+v400eeprom.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnrepos/v400/!svn/ver/681/trunk/v300/softupdate/v400eeprom/v400eeprom.c
+END
+v400eeprom.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/v400eeprom/v400eeprom.h
+END
+SUSI.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/v400eeprom/SUSI.h
+END
+libSUSI-3.02.so
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/v400eeprom/libSUSI-3.02.so
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/v400eeprom/Makefile
+END

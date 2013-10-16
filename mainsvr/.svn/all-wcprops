@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnrepos/v400/!svn/ver/1829/trunk/v300/softupdate/mainsvr
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/mainsvr/Makefile
+END
+softupdate.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/mainsvr/softupdate.cpp
+END

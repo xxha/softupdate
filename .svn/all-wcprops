@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svnrepos/v400/!svn/ver/1931/trunk/v300/softupdate
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/Makefile
+END
+softupdate
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnrepos/v400/!svn/ver/1931/trunk/v300/softupdate/softupdate
+END
+sh.sh
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/sh.sh
+END
+config.mak
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnrepos/v400/!svn/ver/649/trunk/v300/softupdate/config.mak
+END

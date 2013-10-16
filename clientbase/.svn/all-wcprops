@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnrepos/v400/!svn/ver/1829/trunk/v300/softupdate/clientbase
+END
+eventexecuter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/eventexecuter.cpp
+END
+eventqueue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/eventqueue.cpp
+END
+md5checksum.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepos/v400/!svn/ver/668/trunk/v300/softupdate/clientbase/md5checksum.cpp
+END
+clientbase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/clientbase.cpp
+END
+eventexecuter.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/eventexecuter.h
+END
+eventqueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/eventqueue.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/Makefile
+END
+clientcommon.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/clientcommon.h
+END
+md5checksum.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnrepos/v400/!svn/ver/668/trunk/v300/softupdate/clientbase/md5checksum.h
+END
+clientbase.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnrepos/v400/!svn/ver/646/trunk/v300/softupdate/clientbase/clientbase.h
+END

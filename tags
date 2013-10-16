@@ -1,0 +1,554 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOC_MEM_FAIL	common/macro.h	97;"	d
+AMD	v400eeprom/SUSI.h	49;"	d
+APP_FLAG	clientbase/clientcommon.h	22;"	d
+AR	config.mak	/^AR	=	$(CROSS_COMPILE)ar$/;"	m
+AR_FILES	Makefile	/^AR_FILES=$(foreach i,$(SUBDIRS),$(i)\/$(i).a)$/;"	m
+AS	config.mak	/^AS	=	$(CROSS_COMPILE)as$/;"	m
+AppFlag	clientbase/clientcommon.h	/^	char			AppFlag[8];$/;"	m	struct:st_FrameHeader
+BOOL	common/macro.h	/^typedef bool			BOOL;$/;"	t
+BOOL	v400eeprom/SUSI.h	/^typedef int             BOOL;$/;"	t
+BUFFER_SIZE	common/macro.h	85;"	d
+BYTE	common/macro.h	/^typedef unsigned char	BYTE;$/;"	t
+BYTE	v400eeprom/SUSI.h	/^typedef unsigned char   BYTE;$/;"	t
+BeginMySocketBroadcastListen	common/VControlServer.cpp	/^void* BeginMySocketBroadcastListen(void*)$/;"	f
+BeginMySocketListen	common/VControlServer.cpp	/^void* BeginMySocketListen(void*)$/;"	f
+BitOptionDeal	common/VControlServer.cpp	/^int BitOptionDeal(int iSource,int iBit,int iData)$/;"	f
+CC	config.mak	/^CC	=	$(CROSS_COMPILE)gcc$/;"	m
+CCommonServer	common/CommonServer.cpp	/^CCommonServer::CCommonServer(void)$/;"	f	class:CCommonServer
+CCommonServer	common/CommonServer.h	/^class CCommonServer : public ClientBase$/;"	c
+CFLAGS	config.mak	/^CFLAGS  = -fsigned-char$/;"	m
+CHAR	v400eeprom/SUSI.h	/^typedef char            CHAR;$/;"	t
+CHECKSUM_NOT_EQUAL	common/macro.h	108;"	d
+CLEAN_FLAG	Makefile	/^preclean: CLEAN_FLAG=YES$/;"	m
+CMD_DoWork	common/CommonServer.cpp	/^void *CMD_DoWork(void *pCCServer)$/;"	f
+COMMLIB	app/Makefile	/^COMMLIB:=..\/libcommsvr.a$/;"	m
+COMMON_DEFINITIONS	config.mak	/^COMMON_DEFINITIONS =$/;"	m
+COMMON_INCLUDES	config.mak	/^COMMON_INCLUDES    = $/;"	m
+COMMON_LIBRARIES	config.mak	/^COMMON_LIBRARIES = $(COMMON_STATICLIBS) $(COMMON_SHAREDLIBS)$/;"	m
+COMMON_SHAREDLIBS	config.mak	/^COMMON_SHAREDLIBS  =$/;"	m
+COMMON_STATICLIBS	config.mak	/^COMMON_STATICLIBS  =$/;"	m
+CONECT_TIMEOUT_SECONDS	clientbase/clientcommon.h	25;"	d
+CORE_CPU_DYNAMIC	v400eeprom/SUSI.h	136;"	d
+CORE_CPU_FULL_SPEED	v400eeprom/SUSI.h	134;"	d
+CORE_CPU_LOW_SPEED	v400eeprom/SUSI.h	135;"	d
+CP	config.mak	/^CP  =   cp -f$/;"	m
+CPP	config.mak	/^CPP = $(CXX)$/;"	m
+CREATE_THREAD_FAILED	clientbase/clientcommon.h	32;"	d
+CROSS_COMPILE	config.mak	/^	CROSS_COMPILE = arm-none-linux-gnueabi-$/;"	m
+CROSS_COMPILE	config.mak	/^	CROSS_COMPILE = powerpc-860-linux-gnu-$/;"	m
+CSingleService	common/SingleService.cpp	/^CSingleService::CSingleService(void)$/;"	f	class:CSingleService
+CSingleService	common/SingleService.h	/^class CSingleService$/;"	c
+CXX	config.mak	/^CXX =	$(CROSS_COMPILE)g++$/;"	m
+CXXFLAGS	config.mak	/^CXXFLAGS = $(CFLAGS)$/;"	m
+CheckPwd	common/VControlServer.cpp	/^ bool CheckPwd(OPTTABLEINFO300 stOptTbl,UCHAR mac[],UCHAR serAll[])$/;"	f
+ClientBase	clientbase/clientbase.cpp	/^ClientBase::ClientBase()$/;"	f	class:ClientBase
+ClientBase	clientbase/clientbase.h	/^class ClientBase$/;"	c
+CloseService	common/SingleService.cpp	/^bool CSingleService::CloseService()$/;"	f	class:CSingleService
+Connect	clientbase/clientbase.cpp	/^bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char* device)$/;"	f	class:ClientBase
+Connect	common/CommonServer.cpp	/^void CCommonServer::Connect()$/;"	f	class:CCommonServer
+CoreSend	clientbase/clientbase.cpp	/^int ClientBase::CoreSend(Socket socket, unsigned char* data,  int length, int flag)$/;"	f	class:ClientBase
+CreatCommonServerInstance	common/VControlServer.cpp	/^void* CreatCommonServerInstance(void* socketClient)$/;"	f
+CreateDir	common/CommonServer.cpp	/^int CreateDir(const char *sPathName) $/;"	f
+CreateFrame	clientbase/clientbase.cpp	/^unsigned char* ClientBase::CreateFrame(const char* appFlag, const unsigned char* data, unsigned int length, unsigned int type, unsigned char* buffer)$/;"	f	class:ClientBase
+CreateModuleSocketClient	common/VControlServer.cpp	/^int CreateModuleSocketClient(int *pskClient)$/;"	f
+CreateService	common/SingleService.cpp	/^bool CSingleService::CreateService()$/;"	f	class:CSingleService
+DEP_FILES	config.mak	/^DEP_FILES=$(patsubst %.c,%.dep,$(SOURCES_FILES_C)) $(patsubst %.cpp,%.dep,$(SOURCES_FILES_CPP)) $/;"	m
+DISCONECT_TIMEOUT_SECONDS	clientbase/clientcommon.h	26;"	d
+DISCONNECT_FAILED	clientbase/clientcommon.h	31;"	d
+DWORD	v400eeprom/SUSI.h	/^typedef unsigned long   DWORD;$/;"	t
+Data	clientbase/clientcommon.h	/^	unsigned char*	    Data;$/;"	m	struct:st_ReceivedData
+DataLength	clientbase/clientcommon.h	/^	unsigned int	DataLength;$/;"	m	struct:st_FrameHeader
+DataNode	clientbase/eventqueue.h	/^		DataNode(const ReceivedData* data, DataNode* next, DataNode* pre)$/;"	f	class:DataNode
+DataNode	clientbase/eventqueue.h	/^class DataNode$/;"	c
+DealReplyMessage	clientbase/clientbase.cpp	/^void ClientBase::DealReplyMessage(const unsigned char* md5Hash, bool isSucceeded)$/;"	f	class:ClientBase
+DebugPrintf	common/VControlServer.cpp	/^ int DebugPrintf(char *format, ...)$/;"	f
+DebugPrintfArray	common/VControlServer.cpp	/^int DebugPrintfArray(char * strName,UCHAR *array,int iLen)$/;"	f
+Decode	clientbase/md5checksum.cpp	/^void Decode(UINT4* output, POINTER input, unsigned int len) $/;"	f
+Dequeue	clientbase/eventqueue.cpp	/^ReceivedData* EventQueue_180::Dequeue(ReceivedData* data)$/;"	f	class:EventQueue_180
+Disconnect	clientbase/clientbase.cpp	/^bool ClientBase::Disconnect()$/;"	f	class:ClientBase
+DisconnectForcibly	clientbase/clientbase.cpp	/^bool ClientBase::DisconnectForcibly()$/;"	f	class:ClientBase
+DoEvent	clientbase/eventexecuter.cpp	/^bool EventExecuter::DoEvent()$/;"	f	class:EventExecuter
+DownFile_DoWork	common/CommonServer.cpp	/^void *DownFile_DoWork(void *pCCServer)$/;"	f
+E2PROM_OPTION_SIZE	common/macro.h	86;"	d
+EEPROM_I2C_ADDR	v400eeprom/v400eeprom.c	14;"	d	file:
+EEPROM_MAXSIZE	common/macro.h	120;"	d
+EEPROM_MAXSIZE	v400eeprom/v400eeprom.c	16;"	d	file:
+EEPROM_SIZE	common/VControlServer.cpp	47;"	d	file:
+EEPRomStart	common/macro.h	122;"	d
+ESIO_DMASK_DIRECTION	v400eeprom/SUSI.h	/^   ESIO_DMASK_DIRECTION			= 0x0020,$/;"	e	enum:__anon10
+ESIO_DMASK_IN	v400eeprom/SUSI.h	/^   ESIO_DMASK_IN				= 0x0040,   $/;"	e	enum:__anon10
+ESIO_DMASK_OUT	v400eeprom/SUSI.h	/^   ESIO_DMASK_OUT				= 0x0080,$/;"	e	enum:__anon10
+ESIO_DMASK_READABLEOUT	v400eeprom/SUSI.h	/^   ESIO_DMASK_READABLEOUT		= 0x0100$/;"	e	enum:__anon10
+ESIO_MASKFLAG	v400eeprom/SUSI.h	/^} ESIO_MASKFLAG;$/;"	t	typeref:enum:__anon10
+ESIO_SMASK_CONFIGURABLE	v400eeprom/SUSI.h	/^   ESIO_SMASK_CONFIGURABLE		= 0x0002,$/;"	e	enum:__anon10
+ESIO_SMASK_FIXIN	v400eeprom/SUSI.h	/^   ESIO_SMASK_FIXIN				= 0x0004,$/;"	e	enum:__anon10
+ESIO_SMASK_FIXOUT	v400eeprom/SUSI.h	/^   ESIO_SMASK_FIXOUT			= 0x0008,$/;"	e	enum:__anon10
+ESIO_SMASK_IF_OUT_READABLE	v400eeprom/SUSI.h	/^   ESIO_SMASK_IF_OUT_READABLE	= 0x0010,$/;"	e	enum:__anon10
+ESIO_SMASK_PIN_FULL	v400eeprom/SUSI.h	/^   ESIO_SMASK_PIN_FULL			= 0x0001,$/;"	e	enum:__anon10
+EXECUTE_WAIT_SECONDS	clientbase/clientcommon.h	29;"	d
+EXEC_SHELL_ERR	common/macro.h	100;"	d
+Encode	clientbase/md5checksum.cpp	/^void Encode(POINTER output, UINT4* input, unsigned int len) $/;"	f
+Enqueue	clientbase/eventqueue.cpp	/^bool EventQueue_180::Enqueue(const ReceivedData* data)$/;"	f	class:EventQueue_180
+EventExecuter	clientbase/eventexecuter.cpp	/^EventExecuter::EventExecuter(ClientBase* client)$/;"	f	class:EventExecuter
+EventExecuter	clientbase/eventexecuter.h	/^class EventExecuter$/;"	c
+EventQueue_180	clientbase/eventqueue.cpp	/^EventQueue_180::EventQueue_180(int size)$/;"	f	class:EventQueue_180
+EventQueue_180	clientbase/eventqueue.h	/^class EventQueue_180$/;"	c
+ExcuteThread	clientbase/eventexecuter.cpp	/^void* ExcuteThread(void* para)$/;"	f
+Execute	clientbase/clientbase.cpp	/^void ClientBase::Execute(unsigned int type, const unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+Execute	clientbase/eventexecuter.cpp	/^void EventExecuter::Execute(const ReceivedData* data)$/;"	f	class:EventExecuter
+F	clientbase/md5checksum.h	51;"	d
+F2ND	v400eeprom/SUSI.h	102;"	d
+FALSE	v400eeprom/SUSI.h	36;"	d
+FAUX2	v400eeprom/SUSI.h	104;"	d
+FCPU	v400eeprom/SUSI.h	100;"	d
+FCPU2	v400eeprom/SUSI.h	103;"	d
+FF	clientbase/md5checksum.h	61;"	d
+FILEINFO	common/macro.h	/^}FILEINFO,* PFILEINFO;$/;"	t	typeref:struct:__anon4
+FILEINFODETAIL	common/macro.h	/^}FILEINFODETAIL,*PFILEINFODETAIL;$/;"	t	typeref:struct:__anon2
+FILEINFODETAIL_LEN	common/macro.h	147;"	d
+FSYS	v400eeprom/SUSI.h	101;"	d
+FindAllSN	common/VControlServer.cpp	/^int FindAllSN()$/;"	f
+FrameHeader	clientbase/clientcommon.h	/^} FrameHeader;$/;"	t	typeref:struct:st_FrameHeader
+G	clientbase/md5checksum.h	52;"	d
+GETPATHFILEINFO	common/macro.h	/^}GETPATHFILEINFO,*PGETPATHFILEINFO;$/;"	t	typeref:struct:__anon3
+GG	clientbase/md5checksum.h	67;"	d
+GetBoardresType	common/VControlServer.cpp	/^int GetBoardresType(int index)$/;"	f
+GetCount	clientbase/eventqueue.cpp	/^int EventQueue_180::GetCount()$/;"	f	class:EventQueue_180
+GetData	clientbase/eventqueue.h	/^		ReceivedData* GetData(ReceivedData* data)$/;"	f	class:DataNode
+GetIsConnecting	clientbase/clientbase.cpp	/^bool ClientBase::GetIsConnecting()$/;"	f	class:ClientBase
+GetIsConnection	common/CommonServer.cpp	/^bool CCommonServer::GetIsConnection()$/;"	f	class:CCommonServer
+GetLastSentBytes	clientbase/clientbase.cpp	/^unsigned char* ClientBase::GetLastSentBytes(unsigned char* data, unsigned int* length)$/;"	f	class:ClientBase
+GetMemoryScriptCMD	common/CommonServer.cpp	/^LPCHAR *GetMemoryScriptCMD(char *pOneLine,int *piCMDLength)$/;"	f
+GetPathFileInfo	common/CommonServer.cpp	/^void GetPathFileInfo(char *data,char *type,char *strTemp)$/;"	f
+GetReceiveType	clientbase/clientbase.cpp	/^unsigned int ClientBase::GetReceiveType()$/;"	f	class:ClientBase
+GetReceivedData	clientbase/clientbase.cpp	/^unsigned char* ClientBase::GetReceivedData(OUT unsigned char* data, OUT unsigned int* length)$/;"	f	class:ClientBase
+GetReplyHashcode	clientbase/clientbase.cpp	/^unsigned char* ClientBase::GetReplyHashcode(unsigned char* data)$/;"	f	class:ClientBase
+GetSocket	clientbase/clientbase.cpp	/^Socket ClientBase::GetSocket()$/;"	f	class:ClientBase
+H	clientbase/md5checksum.h	53;"	d
+HH	clientbase/md5checksum.h	73;"	d
+I	clientbase/md5checksum.h	54;"	d
+II	clientbase/md5checksum.h	79;"	d
+IMAGE_COPY_ERR	common/macro.h	105;"	d
+IMAGE_DELFILE_ERR	common/macro.h	107;"	d
+IMAGE_ERASE_ERR	common/macro.h	104;"	d
+IMAGE_GETINFO_ERR	common/macro.h	102;"	d
+IMAGE_MOUNT_ERR	common/macro.h	101;"	d
+IMAGE_UNMOUNT_ERR	common/macro.h	106;"	d
+IMAGE_WRITE_ERR	common/macro.h	103;"	d
+IN	clientbase/clientcommon.h	12;"	d
+INSTALL	config.mak	/^INSTALL=install$/;"	m
+INTEL	v400eeprom/SUSI.h	45;"	d
+INVALID_ARG_ERR	common/macro.h	96;"	d
+INVALID_PHY_ADD	common/macro.h	98;"	d
+INVALID_SOCKET	clientbase/clientcommon.h	23;"	d
+INVALID_VER_ERR	common/macro.h	95;"	d
+IndexValid	common/macro.h	124;"	d
+InitReceiveDataAndType	clientbase/clientbase.cpp	/^void ClientBase::InitReceiveDataAndType(unsigned int type)$/;"	f	class:ClientBase
+IsFolder	common/CommonServer.cpp	/^static BOOL IsFolder(char* pathname,char* filename)$/;"	f	file:
+IsSendSucceeded	clientbase/clientbase.cpp	/^bool ClientBase::IsSendSucceeded()$/;"	f	class:ClientBase
+KEEPALIVE_COUNT	clientbase/clientcommon.h	18;"	d
+KEEPALIVE_IDLE	clientbase/clientcommon.h	16;"	d
+KEEPALIVE_INTERVAL	clientbase/clientcommon.h	17;"	d
+KeepExecuting	clientbase/eventexecuter.cpp	/^bool EventExecuter::KeepExecuting()$/;"	f	class:EventExecuter
+KeepReceiving	clientbase/clientbase.cpp	/^bool ClientBase::KeepReceiving()$/;"	f	class:ClientBase
+LD	config.mak	/^LD	=	$(CROSS_COMPILE)ld$/;"	m
+LENGTH_OF_LISTEN_QUEUE	common/macro.h	84;"	d
+LINK_INCREMENT	config.mak	/^LINK_INCREMENT=$(RM) $@; $(LD) -o $@ -r $^$/;"	m
+LPCHAR	common/macro.h	/^typedef char*			LPCHAR;$/;"	t
+LPVOID	common/macro.h	/^typedef void*			LPVOID;$/;"	t
+Length	clientbase/clientcommon.h	/^	unsigned int		Length;$/;"	m	struct:st_ReceivedData
+MAX_DIR_LEN	common/macro.h	38;"	d
+MAX_EVENTS_IN_QUEUE	clientbase/clientcommon.h	28;"	d
+MAX_FILENAME_LEN	common/macro.h	80;"	d
+MAX_MEM_LEN	common/macro.h	79;"	d
+MAX_SIZE_OF_PACKET	clientbase/clientcommon.h	19;"	d
+MD5Checksum_H	clientbase/md5checksum.h	2;"	d
+MD5Data	clientbase/md5checksum.cpp	/^unsigned char* MD5Data(POINTER data, unsigned int len, unsigned char* buff) $/;"	f
+MD5Final	clientbase/md5checksum.cpp	/^void MD5Final(unsigned char digest[16], MD5_CTX *context)$/;"	f
+MD5Hash	clientbase/clientcommon.h	/^	unsigned char	MD5Hash[16];$/;"	m	struct:st_FrameHeader
+MD5Init	clientbase/md5checksum.cpp	/^void MD5Init(MD5_CTX *context)$/;"	f
+MD5Transform	clientbase/md5checksum.cpp	/^void MD5Transform(UINT4 state[4], unsigned char block[64]) $/;"	f
+MD5Update	clientbase/md5checksum.cpp	/^void MD5Update(MD5_CTX* context, POINTER input, unsigned int inputLen)$/;"	f
+MD5_CTX	clientbase/md5checksum.h	/^}MD5_CTX;$/;"	t	typeref:struct:__anon11
+MD5_memcpy	clientbase/md5checksum.cpp	/^void MD5_memcpy(POINTER output, POINTER input, unsigned int len) $/;"	f
+MD5_memset	clientbase/md5checksum.cpp	/^void MD5_memset(POINTER output, int value, unsigned int len) $/;"	f
+MDBytes	clientbase/md5checksum.cpp	/^POINTER MDBytes(POINTER data, unsigned int len, POINTER buff) $/;"	f
+MEMDATA	common/macro.h	/^}MEMDATA, *PMEMDATA;$/;"	t	typeref:struct:__anon9
+MEMINFO	common/macro.h	/^}MEMINFO, *PMEMINFO;$/;"	t	typeref:struct:__anon8
+MEM_INVALID_DATA	common/macro.h	115;"	d
+MEM_OP_NOT_FINISH	common/macro.h	114;"	d
+MEM_READ_FAIL	common/macro.h	111;"	d
+MEM_READ_SUCS	common/macro.h	110;"	d
+MEM_WRITE_FAIL	common/macro.h	113;"	d
+MEM_WRITE_SUCS	common/macro.h	112;"	d
+MILLION	common/macro.h	117;"	d
+MIN_PHY_ADDR	common/macro.h	90;"	d
+MODULEINFO	common/macro.h	/^}MODULEINFO,*PMODULEINFO;$/;"	t	typeref:struct:__anon7
+MSG_CHECKFILEEXISTS	common/macro.h	41;"	d
+MSG_CMD	common/macro.h	56;"	d
+MSG_CMD_CANCEL	common/macro.h	57;"	d
+MSG_CONNECT	clientbase/clientcommon.h	38;"	d
+MSG_DATA_CORRECT	clientbase/clientcommon.h	36;"	d
+MSG_DATA_ERROR	clientbase/clientcommon.h	37;"	d
+MSG_GETALLFILEINFO	common/macro.h	70;"	d
+MSG_GETBOARDTYPE	common/macro.h	62;"	d
+MSG_GETCATALOG	common/macro.h	40;"	d
+MSG_GETFILE	common/macro.h	42;"	d
+MSG_GETFILECREATEDATE	common/macro.h	48;"	d
+MSG_GETFILEINFO	common/macro.h	66;"	d
+MSG_GETFILELENGTH	common/macro.h	44;"	d
+MSG_GETFILE_CANCEL	common/macro.h	43;"	d
+MSG_GETMAC	common/macro.h	51;"	d
+MSG_GETSERIALNUMBER	common/macro.h	49;"	d
+MSG_GETSERIALNUMBERALL	common/macro.h	68;"	d
+MSG_GETVERSION	common/macro.h	69;"	d
+MSG_MEMORYSCRIPT	common/macro.h	58;"	d
+MSG_MEMORYSCRIPT_CANCEL	common/macro.h	60;"	d
+MSG_MEMORYSCRIPT_FINISH	common/macro.h	61;"	d
+MSG_MEMORYSCRIPT_START	common/macro.h	59;"	d
+MSG_READMEMORY	common/macro.h	53;"	d
+MSG_READMEMORY_CANCEL	common/macro.h	55;"	d
+MSG_READMODULEBUF	common/macro.h	63;"	d
+MSG_SENDFILE	common/macro.h	45;"	d
+MSG_SENDFILENAME	common/macro.h	47;"	d
+MSG_SENDFILE_CANCEL	common/macro.h	46;"	d
+MSG_SETMAC	common/macro.h	52;"	d
+MSG_SETSERIALNUMBER	common/macro.h	50;"	d
+MSG_WRITEMEMORY	common/macro.h	54;"	d
+MSG_WRITEMODULEBUF	common/macro.h	64;"	d
+MSG_WRITEOPTION	common/macro.h	65;"	d
+MagnifyArray	common/CommonServer.cpp	/^LPCHAR *MagnifyArray(LPCHAR *pSourceArray,int length)$/;"	f
+MemoryScript_DoWork	common/CommonServer.cpp	/^void *MemoryScript_DoWork(void *pCCServer)$/;"	f
+NK_SVR_TIMETOCHECK	common/macro.h	126;"	d
+NR_MAXPACKLEN	common/macro.h	78;"	d
+NULL_POINTER_ERR	common/macro.h	93;"	d
+NVIDIA	v400eeprom/SUSI.h	48;"	d
+Next	clientbase/eventqueue.h	/^		DataNode* Next;$/;"	m	class:DataNode
+OBJ_FILES	config.mak	/^OBJ_FILES=$(patsubst %.c,%.o,$(SOURCES_FILES_C)) $(patsubst %.cpp,%.o,$(SOURCES_FILES_CPP)) $/;"	m
+OPEN_FILE_ERR	common/macro.h	94;"	d
+OPTIONINFO	common/macro.h	/^}OPTIONINFO,* POPTIONINFO;$/;"	t	typeref:struct:__anon6
+OPTION_OFFSET_FTDI	common/VControlServer.cpp	49;"	d	file:
+OPTION_SIZE_FTDI	common/VControlServer.cpp	50;"	d	file:
+OPTTABLEINFO300	common/macro.h	/^}OPTTABLEINFO300, *POPTTABLEINFO300;$/;"	t	typeref:struct:__anon5
+OUT	clientbase/clientcommon.h	13;"	d
+OnReceived	clientbase/clientbase.cpp	/^void ClientBase::OnReceived(unsigned int type, const unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+OnReceived	common/CommonServer.cpp	/^void CCommonServer::OnReceived(unsigned int type, const unsigned char* data, unsigned int length)$/;"	f	class:CCommonServer
+OnServerClose	clientbase/clientbase.cpp	/^void ClientBase::OnServerClose()$/;"	f	class:ClientBase
+OnServerClose	common/CommonServer.cpp	/^ void CCommonServer::OnServerClose()$/;"	f	class:CCommonServer
+OnSocketError	clientbase/clientbase.cpp	/^void ClientBase::OnSocketError()$/;"	f	class:ClientBase
+OnSocketError	common/CommonServer.cpp	/^void CCommonServer::OnSocketError()$/;"	f	class:CCommonServer
+PADDING	clientbase/md5checksum.h	/^static unsigned char PADDING[64] = {$/;"	v
+PFILEINFO	common/macro.h	/^}FILEINFO,* PFILEINFO;$/;"	t	typeref:struct:__anon4
+PFILEINFODETAIL	common/macro.h	/^}FILEINFODETAIL,*PFILEINFODETAIL;$/;"	t	typeref:struct:__anon2
+PGETPATHFILEINFO	common/macro.h	/^}GETPATHFILEINFO,*PGETPATHFILEINFO;$/;"	t	typeref:struct:__anon3
+PMEMDATA	common/macro.h	/^}MEMDATA, *PMEMDATA;$/;"	t	typeref:struct:__anon9
+PMEMINFO	common/macro.h	/^}MEMINFO, *PMEMINFO;$/;"	t	typeref:struct:__anon8
+PMODULEINFO	common/macro.h	/^}MODULEINFO,*PMODULEINFO;$/;"	t	typeref:struct:__anon7
+POINTER	clientbase/md5checksum.h	/^typedef unsigned char* POINTER;$/;"	t
+POPTIONINFO	common/macro.h	/^}OPTIONINFO,* POPTIONINFO;$/;"	t	typeref:struct:__anon6
+POPTTABLEINFO300	common/macro.h	/^}OPTTABLEINFO300, *POPTTABLEINFO300;$/;"	t	typeref:struct:__anon5
+PTIME	common/macro.h	/^}TIME,* PTIME;$/;"	t	typeref:struct:__anon1
+Pre	clientbase/eventqueue.h	/^		DataNode* Pre;$/;"	m	class:DataNode
+ProcessSIGPIPESignal	clientbase/clientbase.cpp	/^void ProcessSIGPIPESignal(int signo)$/;"	f
+RANLIB	config.mak	/^RANLIB =	$(CROSS_COMPILE)ranlib$/;"	m
+RDC	v400eeprom/SUSI.h	50;"	d
+RECEIVE_BUFFER_SIZE	clientbase/clientcommon.h	20;"	d
+ROTATE_LEFT	clientbase/md5checksum.h	57;"	d
+RaiseRecievedEvent	clientbase/clientbase.cpp	/^void ClientBase::RaiseRecievedEvent(unsigned int type, const unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+RaiseServerCloseEvent	clientbase/clientbase.cpp	/^void ClientBase::RaiseServerCloseEvent()$/;"	f	class:ClientBase
+RaiseSocketErrorEvent	clientbase/clientbase.cpp	/^void ClientBase::RaiseSocketErrorEvent()$/;"	f	class:ClientBase
+ReadMAC	common/VControlServer.cpp	/^int ReadMAC(unsigned char *pMac)$/;"	f
+ReadMemory	common/VControlServer.cpp	/^int ReadMemory(MEMDATA *pstMemData)$/;"	f
+ReadMemory_DoWork	common/CommonServer.cpp	/^void *ReadMemory_DoWork(void *pCCServer)$/;"	f
+ReadModuleBuf	common/VControlServer.cpp	/^int ReadModuleBuf(PMODULEINFO pModuleInfo,unsigned char *pBuff)$/;"	f
+ReadOptionBuffer	common/VControlServer.cpp	/^int ReadOptionBuffer(unsigned char *pBuff, int start,int iLen)$/;"	f
+ReadOptionBufferIndex	common/VControlServer.cpp	/^int ReadOptionBufferIndex(unsigned char *buff, int start,int iLen, int index)$/;"	f
+ReadOptionBufferIndex_40g	common/VControlServer.cpp	/^int ReadOptionBufferIndex_40g(unsigned char *buff, int start,int iLen, int index)$/;"	f
+ReadSerialNumber	common/VControlServer.cpp	/^int ReadSerialNumber(unsigned char *pSerialNumber)$/;"	f
+Receive	clientbase/clientbase.cpp	/^bool ClientBase::Receive(unsigned int type, OUT unsigned char* data, OUT unsigned int* length, int secondsTimeout)$/;"	f	class:ClientBase
+ReceiveThread	clientbase/clientbase.cpp	/^void* ReceiveThread(void * para)$/;"	f
+ReceivedData	clientbase/clientcommon.h	/^} ReceivedData;$/;"	t	typeref:struct:st_ReceivedData
+Reply	clientbase/clientbase.cpp	/^void ClientBase::Reply(bool successful)$/;"	f	class:ClientBase
+S11	clientbase/md5checksum.h	17;"	d
+S12	clientbase/md5checksum.h	18;"	d
+S13	clientbase/md5checksum.h	19;"	d
+S14	clientbase/md5checksum.h	20;"	d
+S21	clientbase/md5checksum.h	21;"	d
+S22	clientbase/md5checksum.h	22;"	d
+S23	clientbase/md5checksum.h	23;"	d
+S24	clientbase/md5checksum.h	24;"	d
+S31	clientbase/md5checksum.h	25;"	d
+S32	clientbase/md5checksum.h	26;"	d
+S33	clientbase/md5checksum.h	27;"	d
+S34	clientbase/md5checksum.h	28;"	d
+S41	clientbase/md5checksum.h	29;"	d
+S42	clientbase/md5checksum.h	30;"	d
+S43	clientbase/md5checksum.h	31;"	d
+S44	clientbase/md5checksum.h	32;"	d
+SEND_BUFFER_SIZE	clientbase/clientcommon.h	21;"	d
+SEND_TIMEOUT_SECONDS	clientbase/clientcommon.h	27;"	d
+SERVER_TCP_PORT	common/macro.h	82;"	d
+SERVER_UDP_PORT	common/macro.h	83;"	d
+SET_SOCKET_OPT_FAILED	clientbase/clientcommon.h	33;"	d
+SIS	v400eeprom/SUSI.h	47;"	d
+SIZE_EEPRom	common/macro.h	119;"	d
+SOCKET_ERROR	clientbase/clientcommon.h	24;"	d
+SOFTUPDATE_VERSION	common/macro.h	37;"	d
+SOURCES_FILES_C	config.mak	/^SOURCES_FILES_C=$(wildcard *.c) $/;"	m
+SOURCES_FILES_CPP	config.mak	/^SOURCES_FILES_CPP=$(wildcard *.cpp)$/;"	m
+SOURCE_FILES	config.mak	/^SOURCE_FILES=$(SOURCES_FILES_C) $(SOURCES_FILES_CPP)$/;"	m
+STRIP	config.mak	/^STRIP  =	$(CROSS_COMPILE)strip$/;"	m
+SUBDIRS	Makefile	/^SUBDIRS=mainsvr v400eeprom clientbase common$/;"	m
+SUB_CHECK	Makefile	/^SUB_CHECK:=$(foreach i,$(SUBDIRS),echo [CHK] checking $(i)...; make -C $(i) || exit 1;)$/;"	m
+SUB_CLEAN	Makefile	/^SUB_CLEAN:=$(foreach i,$(SUBDIRS),echo [DEL] cleaning $(i)...; make -C $(i) clean;)$/;"	m
+SUSI_IIC_TYPE_BOTH	v400eeprom/SUSI.h	111;"	d
+SUSI_IIC_TYPE_PRIMARY	v400eeprom/SUSI.h	109;"	d
+SUSI_IIC_TYPE_SMBUS	v400eeprom/SUSI.h	110;"	d
+ScriptToLine	common/CommonServer.cpp	/^LPCHAR *ScriptToLine(CCommonServer * pCCommonServer, int *piLineCount)$/;"	f
+Send	clientbase/clientbase.cpp	/^bool ClientBase::Send(unsigned int type)$/;"	f	class:ClientBase
+Send	clientbase/clientbase.cpp	/^bool ClientBase::Send(unsigned int type, const unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+Send	clientbase/clientbase.cpp	/^bool ClientBase::Send(unsigned int type, const unsigned char* data, unsigned int length, int secondsTimeout)$/;"	f	class:ClientBase
+Send	clientbase/clientbase.cpp	/^bool ClientBase::Send(unsigned int type, int secondsTimeout)$/;"	f	class:ClientBase
+SendData	common/CommonServer.cpp	/^bool CCommonServer::SendData(unsigned int type, const unsigned char * data, unsigned int length, int secondsTimeout)$/;"	f	class:CCommonServer
+SendData	common/CommonServer.cpp	/^bool CCommonServer::SendData(unsigned int type, int secondsTimeout)$/;"	f	class:CCommonServer
+SetIsConnecting	clientbase/clientbase.cpp	/^void ClientBase::SetIsConnecting(bool value)$/;"	f	class:ClientBase
+SetIsSendSucceeded	clientbase/clientbase.cpp	/^void ClientBase::SetIsSendSucceeded(bool value)$/;"	f	class:ClientBase
+SetKeepExecuting	clientbase/eventexecuter.cpp	/^void EventExecuter::SetKeepExecuting(bool value)$/;"	f	class:EventExecuter
+SetKeepReceiving	clientbase/clientbase.cpp	/^void ClientBase::SetKeepReceiving(bool value)$/;"	f	class:ClientBase
+SetLastSentBytes	clientbase/clientbase.cpp	/^void	ClientBase::SetLastSentBytes(unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+SetReceivedDataAndType	clientbase/clientbase.cpp	/^void ClientBase::SetReceivedDataAndType(unsigned char* data, unsigned int length)$/;"	f	class:ClientBase
+SetReplyHashcode	clientbase/clientbase.cpp	/^void	ClientBase::SetReplyHashcode(unsigned char* data)$/;"	f	class:ClientBase
+SetSocket	clientbase/clientbase.cpp	/^int ClientBase::SetSocket(Socket hNewSocket)$/;"	f	class:ClientBase
+SimpleSend	clientbase/clientbase.cpp	/^bool ClientBase::SimpleSend(unsigned int type)$/;"	f	class:ClientBase
+Socket	clientbase/clientcommon.h	/^typedef	int Socket;$/;"	t
+StartCommonServer	common/VControlServer.cpp	/^bool StartCommonServer()$/;"	f
+StopAll	common/VControlServer.cpp	/^bool StopAll = false;$/;"	v
+StopCommonServer	common/VControlServer.cpp	/^void StopCommonServer()$/;"	f
+StopConnectWaiting	clientbase/clientbase.cpp	/^void ClientBase::StopConnectWaiting()$/;"	f	class:ClientBase
+StopDisconnectWaiting	clientbase/clientbase.cpp	/^void ClientBase::StopDisconnectWaiting()$/;"	f	class:ClientBase
+StopSendWaiting	clientbase/clientbase.cpp	/^void ClientBase::StopSendWaiting()$/;"	f	class:ClientBase
+T	config.mak	/^T=v400$/;"	m
+TARGET	Makefile	/^TARGET=libcommsvr.a$/;"	m
+TARGET	app/Makefile	/^TARGET=softupdate$/;"	m
+TARGET	clientbase/Makefile	/^TARGET=clientbase.a$/;"	m
+TARGET	common/Makefile	/^TARGET=common.a$/;"	m
+TARGET	mainsvr/Makefile	/^TARGET=mainsvr.a$/;"	m
+TARGET	v400eeprom/Makefile	/^TARGET=v400eeprom.a$/;"	m
+TAUX	v400eeprom/SUSI.h	96;"	d
+TCHAR	v400eeprom/SUSI.h	/^typedef char            TCHAR;$/;"	t
+TCPU	v400eeprom/SUSI.h	94;"	d
+TCPU2	v400eeprom/SUSI.h	97;"	d
+TIME	common/macro.h	/^}TIME,* PTIME;$/;"	t	typeref:struct:__anon1
+TRUE	v400eeprom/SUSI.h	35;"	d
+TSYS	v400eeprom/SUSI.h	95;"	d
+Type	clientbase/clientcommon.h	/^	unsigned int		Type;$/;"	m	struct:st_ReceivedData
+Type	clientbase/clientcommon.h	/^	unsigned int	Type;$/;"	m	struct:st_FrameHeader
+UCHAR	common/macro.h	25;"	d
+UCHAR	v400eeprom/SUSI.h	/^typedef unsigned char   UCHAR;$/;"	t
+UINT	common/macro.h	/^typedef unsigned int	UINT;$/;"	t
+UINT2	clientbase/md5checksum.h	/^typedef unsigned short int UINT2;$/;"	t
+UINT4	clientbase/md5checksum.h	/^typedef unsigned long int UINT4;$/;"	t
+ULONG	common/macro.h	17;"	d
+USHORT	common/macro.h	21;"	d
+UX400PRODUCT	common/VControlServer.cpp	45;"	d	file:
+UX400VENDOR	common/VControlServer.cpp	44;"	d	file:
+Usage	app/main.cpp	/^void Usage(char *pName )$/;"	f
+V105	v400eeprom/SUSI.h	88;"	d
+V120	v400eeprom/SUSI.h	80;"	d
+V15	v400eeprom/SUSI.h	89;"	d
+V18	v400eeprom/SUSI.h	90;"	d
+V240	v400eeprom/SUSI.h	91;"	d
+V25	v400eeprom/SUSI.h	77;"	d
+V33	v400eeprom/SUSI.h	78;"	d
+V3SB	v400eeprom/SUSI.h	82;"	d
+V400PANEL_BOARDNUM	common/macro.h	87;"	d
+V50	v400eeprom/SUSI.h	79;"	d
+V5SB	v400eeprom/SUSI.h	81;"	d
+VBAT	v400eeprom/SUSI.h	83;"	d
+VCORE	v400eeprom/SUSI.h	76;"	d
+VCORE2	v400eeprom/SUSI.h	87;"	d
+VC_ALL_SUPPORT	v400eeprom/SUSI.h	128;"	d
+VC_BRIGHT_CTL_SUPPORT	v400eeprom/SUSI.h	126;"	d
+VC_NONE_SUPPORT	v400eeprom/SUSI.h	125;"	d
+VC_VGA_CTL_SUPPORT	v400eeprom/SUSI.h	127;"	d
+VEEX_TEST_APP	v400eeprom/v400eeprom.c	18;"	d	file:
+VERSION	common/macro.h	35;"	d
+VIA	v400eeprom/SUSI.h	46;"	d
+VMAX_SHIFT	v400eeprom/SUSI.h	75;"	d
+VN120	v400eeprom/SUSI.h	85;"	d
+VN50	v400eeprom/SUSI.h	84;"	d
+VTT	v400eeprom/SUSI.h	86;"	d
+WDTMAXNUM	v400eeprom/SUSI.h	119;"	d
+WDTOUT0	v400eeprom/SUSI.h	117;"	d
+WDTOUT1	v400eeprom/SUSI.h	118;"	d
+WORD	v400eeprom/SUSI.h	/^typedef unsigned short  WORD;$/;"	t
+WRITE_FILE_ERR	common/macro.h	99;"	d
+Wait	clientbase/eventexecuter.cpp	/^void EventExecuter::Wait()$/;"	f	class:EventExecuter
+WriteMAC	common/VControlServer.cpp	/^int WriteMAC(unsigned char *pMac)$/;"	f
+WriteMemory	common/VControlServer.cpp	/^int WriteMemory(MEMDATA *pstMemData)$/;"	f
+WriteModuleBuf	common/VControlServer.cpp	/^int WriteModuleBuf(PMODULEINFO pModuleInfo,unsigned char *pBuff)$/;"	f
+WriteOptionBit	common/VControlServer.cpp	/^int WriteOptionBit(POPTIONINFO pOptionInfo)$/;"	f
+WriteOptionBuffer	common/VControlServer.cpp	/^int WriteOptionBuffer(unsigned char *pBuff, int start,int iLen)$/;"	f
+WriteOptionBufferIndex	common/VControlServer.cpp	/^int WriteOptionBufferIndex(unsigned char *pBuff, int start,int iLen,int index)$/;"	f
+WriteOptionBufferIndex_40g	common/VControlServer.cpp	/^int WriteOptionBufferIndex_40g(unsigned char *pBuff, int start,int iLen,int index)$/;"	f
+WriteSerialNumber	common/VControlServer.cpp	/^int WriteSerialNumber(unsigned char *pSerNo)$/;"	f
+_MACRO_H_	common/macro.h	14;"	d
+_SUSI_H_	v400eeprom/SUSI.h	16;"	d
+_ServerSend_obj	common/CommonServer.h	/^	pthread_mutex_t	_ServerSend_obj;$/;"	m	class:CCommonServer
+_WINDOWS_TYPE_DEF	v400eeprom/SUSI.h	23;"	d
+_client	clientbase/eventexecuter.h	/^		ClientBase*			_client;$/;"	m	class:EventExecuter
+_cond	clientbase/clientbase.h	/^		pthread_cond_t	_cond;$/;"	m	class:ClientBase
+_cond	clientbase/eventexecuter.h	/^		pthread_cond_t	_cond;$/;"	m	class:EventExecuter
+_cond_connect	clientbase/clientbase.h	/^		pthread_cond_t	_cond_connect;$/;"	m	class:ClientBase
+_cond_connect_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_cond_connect_obj;$/;"	m	class:ClientBase
+_cond_exit	clientbase/clientbase.h	/^		pthread_cond_t	_cond_exit;$/;"	m	class:ClientBase
+_cond_exit_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_cond_exit_obj;	$/;"	m	class:ClientBase
+_cond_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_cond_obj;$/;"	m	class:ClientBase
+_cond_obj	clientbase/eventexecuter.h	/^		pthread_mutex_t	_cond_obj;$/;"	m	class:EventExecuter
+_cond_receive	clientbase/clientbase.h	/^		pthread_cond_t	_cond_receive;$/;"	m	class:ClientBase
+_cond_receive_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_cond_receive_obj;$/;"	m	class:ClientBase
+_count	clientbase/eventqueue.h	/^		int _count;$/;"	m	class:EventQueue_180
+_data	clientbase/eventqueue.h	/^		ReceivedData* _data;$/;"	m	class:DataNode
+_execute_thread	clientbase/eventexecuter.h	/^		pthread_t			_execute_thread;$/;"	m	class:EventExecuter
+_executer	clientbase/clientbase.h	/^		EventExecuter*	_executer;$/;"	m	class:ClientBase
+_first	clientbase/eventqueue.h	/^		DataNode* _first;$/;"	m	class:EventQueue_180
+_isconnecting	clientbase/clientbase.h	/^		bool				_isconnecting;		$/;"	m	class:ClientBase
+_isconnecting_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_isconnecting_obj;$/;"	m	class:ClientBase
+_keep_running_thread	clientbase/clientbase.h	/^		bool				_keep_running_thread;$/;"	m	class:ClientBase
+_keep_running_thread	clientbase/eventexecuter.h	/^		bool				_keep_running_thread;$/;"	m	class:EventExecuter
+_keep_running_thread_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_keep_running_thread_obj;$/;"	m	class:ClientBase
+_keep_running_thread_obj	clientbase/eventexecuter.h	/^		pthread_mutex_t	_keep_running_thread_obj;$/;"	m	class:EventExecuter
+_last	clientbase/eventqueue.h	/^		DataNode* _last;$/;"	m	class:EventQueue_180
+_last_sent_bytes	clientbase/clientbase.h	/^		unsigned char*	_last_sent_bytes;$/;"	m	class:ClientBase
+_last_sent_bytes_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_last_sent_bytes_obj; \/\/sync obj$/;"	m	class:ClientBase
+_last_sent_length	clientbase/clientbase.h	/^		int 			_last_sent_length;$/;"	m	class:ClientBase
+_last_sent_time	clientbase/clientbase.h	/^		time_t			_last_sent_time;$/;"	m	class:ClientBase
+_maxcount	clientbase/eventqueue.h	/^		int _maxcount;$/;"	m	class:EventQueue_180
+_netclient_cmd_ReadEEPRom	common/VControlServer.cpp	/^int _netclient_cmd_ReadEEPRom(int skClient ,char pBuff[])$/;"	f
+_netclient_cmd_WriteEEPRom	common/VControlServer.cpp	/^int _netclient_cmd_WriteEEPRom(int skClient ,int iStart,int iLen,UCHAR pBuff[])$/;"	f
+_netclient_cmd_opt	common/VControlServer.cpp	/^int _netclient_cmd_opt(int skClient,char *cmd,int size_send,char temp_buff[],bool bIsWrite)$/;"	f
+_obj	clientbase/eventqueue.h	/^		pthread_mutex_t	_obj; \/\/sync obj$/;"	m	class:EventQueue_180
+_queue	clientbase/eventexecuter.h	/^		EventQueue_180*		_queue;$/;"	m	class:EventExecuter
+_receive_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_receive_obj;$/;"	m	class:ClientBase
+_receive_thread	clientbase/clientbase.h	/^		pthread_t			_receive_thread;$/;"	m	class:ClientBase
+_received_data	clientbase/clientbase.h	/^		unsigned char*	_received_data;$/;"	m	class:ClientBase
+_received_length	clientbase/clientbase.h	/^		unsigned int		_received_length;$/;"	m	class:ClientBase
+_received_type	clientbase/clientbase.h	/^		unsigned int		_received_type;$/;"	m	class:ClientBase
+_reply_hashcode	clientbase/clientbase.h	/^		unsigned char*	_reply_hashcode;$/;"	m	class:ClientBase
+_reply_hashcode_obj	clientbase/clientbase.h	/^        pthread_mutex_t	_reply_hashcode_obj;$/;"	m	class:ClientBase
+_send_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_send_obj;$/;"	m	class:ClientBase
+_send_succeeded	clientbase/clientbase.h	/^		bool 			_send_succeeded;$/;"	m	class:ClientBase
+_send_succeeded_obj	clientbase/clientbase.h	/^		pthread_mutex_t	_send_succeeded_obj;$/;"	m	class:ClientBase
+_socket	clientbase/clientbase.h	/^		Socket			_socket;$/;"	m	class:ClientBase
+buffer	clientbase/md5checksum.h	/^	unsigned char buffer[64];                       \/* input buffer *\/$/;"	m	struct:__anon11
+clientbase_class	clientbase/clientbase.h	10;"	d
+common_class	clientbase/clientcommon.h	10;"	d
+count	clientbase/md5checksum.h	/^	UINT4 count[2];									\/* number of bits, modulo 2^64 (lsb first) *\/$/;"	m	struct:__anon11
+data	common/macro.h	/^	int data;							\/\/数据,0 or 1	$/;"	m	struct:__anon6
+day	common/macro.h	/^	int day;$/;"	m	struct:__anon1
+deps	config.mak	/^	@echo "info: deps = $(DEP_FILES)"$/;"	m
+eV400_board_100ge	common/macro.h	/^	eV400_board_100ge,$/;"	e	enum:eV400_board_type
+eV400_board_10g	common/macro.h	/^	eV400_board_10g,$/;"	e	enum:eV400_board_type
+eV400_board_16g	common/macro.h	/^	eV400_board_16g,$/;"	e	enum:eV400_board_type
+eV400_board_1ge	common/macro.h	/^	eV400_board_1ge,$/;"	e	enum:eV400_board_type
+eV400_board_2g5	common/macro.h	/^	eV400_board_2g5,$/;"	e	enum:eV400_board_type
+eV400_board_40g	common/macro.h	/^	eV400_board_40g,$/;"	e	enum:eV400_board_type
+eV400_board_40ge	common/macro.h	/^	eV400_board_40ge,$/;"	e	enum:eV400_board_type
+eV400_board_type	common/macro.h	/^typedef enum eV400_board_type {$/;"	g
+eV400_board_type	common/macro.h	/^} eV400_board_type;$/;"	t	typeref:enum:eV400_board_type
+eV400_board_unknown	common/macro.h	/^	eV400_board_unknown     = 0,$/;"	e	enum:eV400_board_type
+eeprom	common/VControlServer.cpp	/^unsigned char eeprom[EEPROM_SIZE];$/;"	v
+eeprom_close	v400eeprom/v400eeprom.c	/^int eeprom_close()$/;"	f
+eeprom_open	v400eeprom/v400eeprom.c	/^int eeprom_open()$/;"	f
+eeprom_read_buf	v400eeprom/v400eeprom.c	/^int eeprom_read_buf(unsigned int start, unsigned int len, unsigned char* buf)$/;"	f
+eeprom_read_byte	v400eeprom/v400eeprom.c	/^int eeprom_read_byte(unsigned int addr, unsigned char* byte)$/;"	f
+eeprom_write_buf	v400eeprom/v400eeprom.c	/^ int eeprom_write_buf(unsigned int start, unsigned int len, unsigned char * buf)$/;"	f
+eeprom_write_byte	v400eeprom/v400eeprom.c	/^int eeprom_write_byte(unsigned int addr, unsigned char data)$/;"	f
+eventexcuter_class	clientbase/eventexecuter.h	10;"	d
+eventqueue_class	clientbase/eventqueue.h	10;"	d
+filter	common/macro.h	/^	UCHAR filter[256];				\/\/过滤条件，暂时未用到(20130508)$/;"	m	struct:__anon3
+ft2232_checksum	common/VControlServer.cpp	/^unsigned short ft2232_checksum(unsigned char * eeprom, int size)$/;"	f
+g_IsDbg	app/main.cpp	/^volatile bool g_IsDbg = false;	\/\/debug flag$/;"	v
+g_iArg_srvport	common/VControlServer.cpp	/^int  g_iArg_srvport    = 8023;$/;"	v
+g_iServerTCPPort	common/VControlServer.cpp	/^int g_iServerTCPPort = SERVER_TCP_PORT;$/;"	v
+g_iServerUDPPort	common/VControlServer.cpp	/^int g_iServerUDPPort = SERVER_UDP_PORT;$/;"	v
+g_inAddrServer	common/VControlServer.cpp	/^struct sockaddr_in g_inAddrServer;$/;"	v	typeref:struct:sockaddr_in
+g_szAppName	app/main.cpp	/^char g_szAppName[MAX_DIR_LEN] = {'\\0'};	\/\/Application that will be operated!$/;"	v
+g_szArg_netif	common/VControlServer.cpp	/^char g_szArg_netif[64] = "";$/;"	v
+g_szArg_optfile	common/VControlServer.cpp	/^char g_szArg_optfile[256] = "";$/;"	v
+hour	common/macro.h	/^	int hour;$/;"	m	struct:__anon1
+iIndex	common/macro.h	/^	int iIndex;				\/\/索引$/;"	m	struct:__anon7
+iLength	common/macro.h	/^	int iLength;			\/\/长度		$/;"	m	struct:__anon7
+iStartAddr	common/macro.h	/^	int iStartAddr;			\/\/开始地址$/;"	m	struct:__anon7
+index	common/macro.h	/^	int index;						\/\/索引$/;"	m	struct:__anon6
+length	common/macro.h	/^	int length;$/;"	m	struct:__anon2
+length	common/macro.h	/^	int length;$/;"	m	struct:__anon4
+m_CMD	common/CommonServer.h	/^	char *m_CMD;								\/\/待执行的命令$/;"	m	class:CCommonServer
+m_MemoryScript	common/CommonServer.h	/^	char *m_MemoryScript;						\/\/脚本字符串$/;"	m	class:CCommonServer
+m_MemoryScriptLength	common/CommonServer.h	/^	ULONG m_MemoryScriptLength;					\/\/本次脚本长度$/;"	m	class:CCommonServer
+m_bIsCMDCancel	common/CommonServer.h	/^	bool m_bIsCMDCancel;						\/\/执行命令后的返回值取消的标记$/;"	m	class:CCommonServer
+m_bIsGetFileCancel	common/CommonServer.h	/^	bool m_bIsGetFileCancel;					\/\/文件下载取消的标记$/;"	m	class:CCommonServer
+m_bIsMemoryScriptCancel	common/CommonServer.h	/^	bool m_bIsMemoryScriptCancel;				\/\/取消执行内存脚本$/;"	m	class:CCommonServer
+m_bIsMemoryScriptFinish	common/CommonServer.h	/^	bool m_bIsMemoryScriptFinish;				\/\/脚本是否执行完成$/;"	m	class:CCommonServer
+m_bIsReadMemoryCancel	common/CommonServer.h	/^	bool m_bIsReadMemoryCancel;					\/\/读取内存取消的标记$/;"	m	class:CCommonServer
+m_bIsSendFileCancel	common/CommonServer.h	/^	bool m_bIsSendFileCancel;					\/\/文件上传取消的标记$/;"	m	class:CCommonServer
+m_fpSendFile	common/CommonServer.h	/^	FILE *m_fpSendFile;							\/\/上传文件时本地文件句柄$/;"	m	class:CCommonServer
+m_memInfoRead	common/CommonServer.h	/^	MEMINFO m_memInfoRead;						\/\/读取内存时的参数$/;"	m	class:CCommonServer
+m_pGetFilePath	common/CommonServer.h	/^	char *m_pGetFilePath;						\/\/下载文件时本地路径$/;"	m	class:CCommonServer
+m_pSendFilePath	common/CommonServer.h	/^	char *m_pSendFilePath;						\/\/上传文件时本地路径$/;"	m	class:CCommonServer
+m_threadCMD	common/CommonServer.h	/^	pthread_t m_threadCMD;						\/\/执行命令后的返回值$/;"	m	class:CCommonServer
+m_threadDownFile	common/CommonServer.h	/^	pthread_t m_threadDownFile;					\/\/下载文件的线程$/;"	m	class:CCommonServer
+m_threadMemoryScript	common/CommonServer.h	/^	pthread_t m_threadMemoryScript;				\/\/执行内存脚本的线程$/;"	m	class:CCommonServer
+m_threadReadMemory	common/CommonServer.h	/^	pthread_t m_threadReadMemory;				\/\/读取内存的线程$/;"	m	class:CCommonServer
+main	app/main.cpp	/^int main(int argc, char* argv[])$/;"	f
+minute	common/macro.h	/^	int minute;$/;"	m	struct:__anon1
+month	common/macro.h	/^	int month;$/;"	m	struct:__anon1
+mymemset	app/main.cpp	/^static void *mymemset(char *p, int c, unsigned int len)$/;"	f	file:
+name	common/macro.h	/^	UCHAR name[256];				\/\/短文件名，不带路径$/;"	m	struct:__anon2
+null	clientbase/clientcommon.h	15;"	d
+objs	config.mak	/^	@echo "info: objs = $(OBJ_FILES)"$/;"	m
+offset	common/macro.h	/^    int offset; \/\/Option table$/;"	m	struct:__anon5
+optTableInfo	common/macro.h	/^	OPTTABLEINFO300 optTableInfo;$/;"	m	struct:__anon6
+path	common/macro.h	/^	UCHAR path[256];				\/\/unit下文件夹路径$/;"	m	struct:__anon3
+pucBuf	common/macro.h	/^    UCHAR *pucBuf; $/;"	m	struct:__anon9
+read_options	common/VControlServer.cpp	/^int read_options(unsigned char * options)$/;"	f
+recv_timeout	common/VControlServer.cpp	/^int recv_timeout(int skClient, void *buff, int size, int to_usecs)$/;"	f
+second	common/macro.h	/^	int second;$/;"	m	struct:__anon1
+sources	config.mak	/^	@echo "info: sources = $(SOURCE_FILES)"$/;"	m
+stMemInfo	common/macro.h	/^    MEMINFO stMemInfo;$/;"	m	struct:__anon9
+st_FrameHeader	clientbase/clientcommon.h	/^	st_FrameHeader()$/;"	f	struct:st_FrameHeader
+st_FrameHeader	clientbase/clientcommon.h	/^typedef struct st_FrameHeader$/;"	s
+st_ReceivedData	clientbase/clientcommon.h	/^	st_ReceivedData()$/;"	f	struct:st_ReceivedData
+st_ReceivedData	clientbase/clientcommon.h	/^typedef struct st_ReceivedData$/;"	s
+state	clientbase/md5checksum.h	/^	UINT4 state[4];									\/* state (ABCD) *\/$/;"	m	struct:__anon11
+sys_init	common/VControlServer.cpp	/^int sys_init(unsigned char * sn)$/;"	f
+szPwd	common/macro.h	/^    UCHAR szPwd[9]; \/\/User password$/;"	m	struct:__anon5
+testSN	common/VControlServer.cpp	/^char testSN[256] = {'\\0'};$/;"	v
+threadHandleBroadcastListen	common/VControlServer.cpp	/^pthread_t threadHandleBroadcastListen;				\/\/服务端用来接收广播监听的线程$/;"	v
+threadHandleListen	common/VControlServer.cpp	/^pthread_t threadHandleListen;						\/\/服务端用来监听的线程$/;"	v
+time	common/macro.h	/^	TIME time;$/;"	m	struct:__anon2
+time	common/macro.h	/^	TIME time;$/;"	m	struct:__anon4
+type	common/macro.h	/^	UCHAR type[256];				\/\/此路径下文件的类型，直接赋值给FILEINFODETAIL中type$/;"	m	struct:__anon3
+type	common/macro.h	/^	UCHAR type[256];				\/\/文件类型，传过来的参数，直接赋值即可。(当前路径下文件类型GETPATHFILEINFO中type)$/;"	m	struct:__anon2
+ulLength	common/macro.h	/^    ULONG ulLength;    $/;"	m	struct:__anon8
+ulStartAddr	common/macro.h	/^    ULONG ulStartAddr;$/;"	m	struct:__anon8
+ux400_ftdic	common/VControlServer.cpp	/^struct ftdi_context ux400_ftdic;$/;"	v	typeref:struct:ftdi_context
+v400_boardres_ind2netif	common/VControlServer.cpp	/^int v400_boardres_ind2netif (int board_index, char* netif)$/;"	f
+v400_boardres_ind2sn	common/VControlServer.cpp	/^int v400_boardres_ind2sn (int board_index, char *sn)$/;"	f
+v400_boardres_ind2usbpath	common/VControlServer.cpp	/^int v400_boardres_ind2usbpath (int board_index,int* pusb_bus, int* pusb_topport, int* pusb_subport)$/;"	f
+v400_boardres_sn2type	common/VControlServer.cpp	/^int v400_boardres_sn2type (const void *sn)$/;"	f
+write_options	common/VControlServer.cpp	/^int write_options(unsigned char * options)$/;"	f
+year	common/macro.h	/^	int year;$/;"	m	struct:__anon1
+~CCommonServer	common/CommonServer.cpp	/^CCommonServer::~CCommonServer(void)$/;"	f	class:CCommonServer
+~CSingleService	common/SingleService.cpp	/^CSingleService::~CSingleService(void)$/;"	f	class:CSingleService
+~ClientBase	clientbase/clientbase.cpp	/^ClientBase::~ClientBase()$/;"	f	class:ClientBase
+~DataNode	clientbase/eventqueue.h	/^		~DataNode()$/;"	f	class:DataNode
+~EventExecuter	clientbase/eventexecuter.cpp	/^EventExecuter::~EventExecuter()$/;"	f	class:EventExecuter
+~EventQueue_180	clientbase/eventqueue.cpp	/^EventQueue_180::~EventQueue_180()$/;"	f	class:EventQueue_180
+~st_ReceivedData	clientbase/clientcommon.h	/^	~st_ReceivedData()$/;"	f	struct:st_ReceivedData
