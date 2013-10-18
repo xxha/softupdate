@@ -1,10 +1,10 @@
 /*****************************************************************************************
-** VControlServer.cpp: 供外部程序启动或停止服务,控制服务运行
-** 流程: 1,外部程序通过调用VControlServer.cpp的StartCommonServer()函数,来启动监听服务.
-**	 2,创建一个新的线程,来启动TCP监听.
-**       3,有远程IP请求连接,则创建新的线程,并新建一个CCommonServer的实例对象,将Socket对象传入.
-**       4,CCommonServer的实例对象与远程建立连接并进行交互.
-**
+** VControlServer.cpp: provide external app, start or end service, control service routine.
+** routine:
+**	 1. external app call StartCommonServer() in VControlServer.cpp, to start listen service.
+**	 2. create new thread, to start TCP listen.
+**	 3. remote IP connect request approaching, then create new thread, and new CCommonServer instance, and input Socket .
+**	 4. instances object of CCommonServer interact with remote side, and communication
 **
 **
 ** Author: cjiang
@@ -29,11 +29,11 @@
 #include <dirent.h>					//DIR
 #include <fcntl.h> 
 #include <ctype.h>					//isalnum
+#include <ftdi.h>
 #include "macro.h"
 #include "CommonServer.h"
 #include "../v400eeprom/v400eeprom.h"
 #include "../clientbase/md5checksum.h"
-#include <ftdi.h>
 
 #define	UX400VENDOR	0x0403
 #define	UX400PRODUCT	0x6010
@@ -48,13 +48,13 @@ struct ftdi_context ux400_ftdic;
 unsigned char eeprom[EEPROM_SIZE];
 char testSN[256] = {'\0'};
 
-pthread_t threadHandleListen;					//服务端用来监听的线程
-pthread_t threadHandleBroadcastListen;				//服务端用来接收广播监听的线程
+pthread_t threadHandleListen;					//service thread for listen
+pthread_t threadHandleBroadcastListen;				//service thread for boardcast listin
 bool StopAll = false;
 
-//带索引的读写模块时的端口号
+//port number with module index
 char g_szArg_netif[64] = "";
-int  g_iArg_srvport    = 8023;
+int  g_iArg_srvport	= 8023;
 char g_szArg_optfile[256] = "";
 struct sockaddr_in g_inAddrServer;
 int g_iServerTCPPort = SERVER_TCP_PORT;
@@ -79,20 +79,20 @@ int DebugPrintfArray(char * strName,UCHAR *array,int iLen)
 
  int DebugPrintf(char *format, ...)
 {	
-    char szBuf[256] = {'\0'};
-    va_list args;
-    extern bool g_IsDbg;
+	char szBuf[256] = {'\0'};
+	va_list args;
+	extern bool g_IsDbg;
 
-    if( true == g_IsDbg )
-    {
-        va_start(args, format);	
-        vsnprintf(szBuf, 255, format, args);
+	if( true == g_IsDbg )
+	{
+		va_start(args, format);	
+		vsnprintf(szBuf, 255, format, args);
 
-        printf(szBuf);
-        return 0;
-    }
+		printf(szBuf);
+		return 0;
+	}
 
-    return 0;
+	return 0;
 }
 
 void* CreatCommonServerInstance(void* socketClient)
@@ -129,55 +129,55 @@ void* CreatCommonServerInstance(void* socketClient)
 	css->Disconnect();
 }
 
-//创建CCommonServer的实例对象,启动它的TCP,UDP监听服务
+//create CCommonServer instance, and start it's TCP and UDP listen service.
 void* BeginMySocketListen(void*)
 {
 	DebugPrintf("Into BeginMyTcpSocket...\n");
 	 
-    //设置一个socket地址结构server_addr,代表服务器internet地址, 端口 
-    struct sockaddr_in serverListen_addr; 
-    bzero(&serverListen_addr,sizeof(serverListen_addr)); //把一段内存区的内容全部设置为0 
-    serverListen_addr.sin_family = AF_INET; 
-    serverListen_addr.sin_addr.s_addr = htons(INADDR_ANY); 
-    serverListen_addr.sin_port = htons(g_iServerTCPPort); 
+	//set server_addr for a socket struct. that means internet address and port number of service 
+	struct sockaddr_in serverListen_addr; 
+	bzero(&serverListen_addr,sizeof(serverListen_addr));
+	serverListen_addr.sin_family = AF_INET; 
+	serverListen_addr.sin_addr.s_addr = htons(INADDR_ANY); 
+	serverListen_addr.sin_port = htons(g_iServerTCPPort); 
 
-    //创建用于internet的流协议(TCP)socket,用serverListen_socket代表服务器socket 
-    int serverListen_socket = socket(PF_INET,SOCK_STREAM,0); 
-    if( serverListen_socket < 0) 
-    { 
-        printf("BeginMySocketListen: Create Socket Failed!\n"); 
-        exit(1); 
-    }
+	//create stream protocal(TCP) socket on server.  
+	int serverListen_socket = socket(PF_INET,SOCK_STREAM,0); 
+	if( serverListen_socket < 0) 
+	{ 
+		printf("BeginMySocketListen: Create Socket Failed!\n"); 
+		exit(1); 
+	}
 	else
 	{
 		DebugPrintf("BeginMySocketListen: Create Socket Success!\n");
 	}
-     
-    //把socket和socket地址结构联系起来 
-    if(bind(serverListen_socket,(struct sockaddr*)&serverListen_addr,sizeof(serverListen_addr))) 
-    { 
-        printf("BeginMySocketListen: Server Bind Port : %d Failed!\n", g_iServerTCPPort);  
-        exit(1); 
-    }
+	 
+	//bind socket and socket address 
+	if(bind(serverListen_socket,(struct sockaddr*)&serverListen_addr,sizeof(serverListen_addr))) 
+	{ 
+		printf("BeginMySocketListen: Server Bind Port : %d Failed!\n", g_iServerTCPPort);  
+		exit(1); 
+	}
 	else
 	{
 		DebugPrintf("BeginMySocketListen: Server Bind Port : %d Success!\n", g_iServerTCPPort);
 	}
-     
-    //serverListen_socket用于监听 
-    if (listen(serverListen_socket, LENGTH_OF_LISTEN_QUEUE) ) 
-    {
-        printf("BeginMySocketListen: Server Listen Failed!");  
-        exit(1); 
-    }
+	 
+	//serverListen_socket for listen
+	if (listen(serverListen_socket, LENGTH_OF_LISTEN_QUEUE) ) 
+	{
+		printf("BeginMySocketListen: Server Listen Failed!");  
+		exit(1); 
+	}
 	else
 	{
 		DebugPrintf("BeginMySocketListen: Server Listen Success!\n");
 	}
 	
 	int iCount = 0;
-	fd_set    set;
-	struct      timeval timeout;
+	fd_set	set;
+	struct	  timeval timeout;
 	socklen_t   iAddrSize;
 	while(1)
 	{
@@ -202,7 +202,7 @@ void* BeginMySocketListen(void*)
 			iCount++;
 			DebugPrintf("BeginMySocketListen:\r\n..New id = %d ....\r\n",iCount);
 
-			//定义客户端的socket地址结构client_addr 
+			//client socket address 
 			struct sockaddr_in clientDest_addr; 
 			socklen_t length = sizeof(clientDest_addr); 
 
@@ -211,7 +211,7 @@ void* BeginMySocketListen(void*)
 			//accept函数返回一个新的socket,这个socket(newClient_socket)用于同连接到的客户的通信 
 			//newClient_socket代表了服务器和客户端之间的一个通信通道 
 			//accept函数把连接到的客户端信息填写到客户端的socket地址结构client_addr中 
-        
+		
 			DebugPrintf("BeginMySocketListen: Server waiting client......!\n");
 			int newClient_socket = accept(serverListen_socket,(struct sockaddr*)&clientDest_addr,&length);
 			if ( newClient_socket < 0) 
@@ -236,58 +236,58 @@ void* BeginMySocketListen(void*)
 			}
 		} 
 	}
-    //关闭监听用的socket 
-    close(serverListen_socket); 
+	//close listen socket
+	close(serverListen_socket); 
 
 	DebugPrintf("BeginMySocketListen: Leaveing BeginMyTcpSocket...\n");
 	threadHandleListen = 0;
-    return NULL;
+	return NULL;
 }
 
-//开始监听广播
+//start listen broadcast
 void* BeginMySocketBroadcastListen(void*)
 {
 	DebugPrintf("Into BeginMySocketBroadcastListen...\n");
 	pthread_detach(pthread_self());
 	 
-    //设置一个socket地址结构server_addr,代表服务器internet地址, 端口 
-    struct sockaddr_in serverBroadcast_addr; 
-    bzero(&serverBroadcast_addr,sizeof(serverBroadcast_addr)); //把一段内存区的内容全部设置为0 
-    serverBroadcast_addr.sin_family = AF_INET; 
-    serverBroadcast_addr.sin_addr.s_addr = htons(INADDR_ANY); 
-    serverBroadcast_addr.sin_port = htons(g_iServerUDPPort); 
+	//设置一个socket地址结构server_addr,代表服务器internet地址, 端口 
+	struct sockaddr_in serverBroadcast_addr; 
+	bzero(&serverBroadcast_addr,sizeof(serverBroadcast_addr)); //把一段内存区的内容全部设置为0 
+	serverBroadcast_addr.sin_family = AF_INET; 
+	serverBroadcast_addr.sin_addr.s_addr = htons(INADDR_ANY); 
+	serverBroadcast_addr.sin_port = htons(g_iServerUDPPort); 
 	struct sockaddr_in addrClient;
 	bzero(&addrClient,sizeof(addrClient));
 
-    //创建用于internet的流协议(TCP)socket,用serverListen_socket代表服务器socket 
-    int serverBroadcast_socket = socket(PF_INET,SOCK_DGRAM,0); 
-    if( serverBroadcast_socket < 0) 
-    { 
-        printf("BeginMySocketBroadcastListen: Create UDP Socket Failed!\n"); 
-        exit(1); 
-    }
+	//创建用于internet的流协议(TCP)socket,用serverListen_socket代表服务器socket 
+	int serverBroadcast_socket = socket(PF_INET,SOCK_DGRAM,0); 
+	if( serverBroadcast_socket < 0) 
+	{ 
+		printf("BeginMySocketBroadcastListen: Create UDP Socket Failed!\n"); 
+		exit(1); 
+	}
 	else
 	{
 		DebugPrintf("BeginMySocketBroadcastListen: Create UDP Socket Success!\n");
 	}
 
 	bool optval=true; 
-    setsockopt(serverBroadcast_socket,SOL_SOCKET,SO_BROADCAST,(char*)&optval,sizeof(bool));
-     
-    //把socket和socket地址结构联系起来 
-    if(bind(serverBroadcast_socket,(struct sockaddr*)&serverBroadcast_addr,sizeof(serverBroadcast_addr))) 
-    { 
-        printf("BeginMySocketBroadcastListen: Server Bind Port : %d Failed!\n", g_iServerUDPPort);  
-        exit(1); 
-    }
+	setsockopt(serverBroadcast_socket,SOL_SOCKET,SO_BROADCAST,(char*)&optval,sizeof(bool));
+	 
+	//把socket和socket地址结构联系起来 
+	if(bind(serverBroadcast_socket,(struct sockaddr*)&serverBroadcast_addr,sizeof(serverBroadcast_addr))) 
+	{ 
+		printf("BeginMySocketBroadcastListen: Server Bind Port : %d Failed!\n", g_iServerUDPPort);  
+		exit(1); 
+	}
 	else
 	{
 		DebugPrintf("BeginMySocketBroadcastListen: Server Bind Port : %d Success!\n", g_iServerUDPPort);
 	}
 	
 	int iCount = 0;
-	fd_set    set;
-	struct      timeval timeout;
+	fd_set	set;
+	struct	  timeval timeout;
 	socklen_t   iAddrSize;
 	while(1)
 	{
@@ -316,8 +316,8 @@ void* BeginMySocketBroadcastListen(void*)
 			// 从客户端接收数据
 			char buffer[BUFFER_SIZE]; 
 			bzero(buffer, BUFFER_SIZE); 
-			int nRet = recvfrom(serverBroadcast_socket,buffer,BUFFER_SIZE,0,(struct sockaddr*)&addrClient,&length);    
-			if(SOCKET_ERROR == nRet)       
+			int nRet = recvfrom(serverBroadcast_socket,buffer,BUFFER_SIZE,0,(struct sockaddr*)&addrClient,&length);	
+			if(SOCKET_ERROR == nRet)	   
 			{
 				printf("BeginMySocketBroadcastListen: recvfrom failed.Error = %d !\n",nRet);
 				continue;
@@ -346,17 +346,17 @@ void* BeginMySocketBroadcastListen(void*)
 			}
 		} 
 	}
-    //关闭监听用的socket 
-    close(serverBroadcast_socket); 
+	//关闭监听用的socket 
+	close(serverBroadcast_socket); 
 	threadHandleBroadcastListen = 0;
-    return NULL;
+	return NULL;
 }
 
 int recv_timeout(int skClient, void *buff, int size, int to_usecs)
 {
 	int  recv_size=-1;
 	struct timeval recv_wait;
-	fd_set         recv_fdset;
+	fd_set		 recv_fdset;
 
 	if (to_usecs <= 0)
 	{
@@ -863,15 +863,15 @@ int ReadOptionBuffer(unsigned char *pBuff, int start,int iLen)
 	
 	if((iLen > E2PROM_OPTION_SIZE) || (iLen <= 0))
 	{
-	    	printf("ReadOptionBuffer: iLen is invalid.\n");
+			printf("ReadOptionBuffer: iLen is invalid.\n");
 		return 3;	//Length invalid
 	}
 	
 	iRet = eeprom_open();
 	if( -1 == iRet)
 	{
-	    printf("ReadOptionBuffer: eeprom_open failed.\n");
-	    return 4;		//eeprom_open failed
+		printf("ReadOptionBuffer: eeprom_open failed.\n");
+		return 4;		//eeprom_open failed
 	}
 	
 	iRet = eeprom_read_buf(start, iLen, pBuff);	
@@ -1095,8 +1095,8 @@ int sys_init(unsigned char * sn)
 
 	if((ret = ftdi_usb_open_desc(&ux400_ftdic, UX400VENDOR, UX400PRODUCT, NULL, (char *)sn)) < 0)
 	{
-	    printf("sys_init: ftdi_usb_open_desc failed: %d (%s)\n", ret, ftdi_get_error_string(&ux400_ftdic));
-	    return 4;
+		printf("sys_init: ftdi_usb_open_desc failed: %d (%s)\n", ret, ftdi_get_error_string(&ux400_ftdic));
+		return 4;
 	}
 	
 	return 0;
@@ -1172,15 +1172,15 @@ int WriteOptionBuffer(unsigned char *pBuff, int start,int iLen)
 	
 	if((iLen > E2PROM_OPTION_SIZE) || (iLen <= 0))
 	{
-	    printf("WriteOptionBuffer: Len is invalid.\n");
+		printf("WriteOptionBuffer: Len is invalid.\n");
 		return 3;
 	}
 	
 	iRet = eeprom_open();
 	if( -1 == iRet)
 	{
-	    printf("WriteOptionBuffer: eprom_open failed.\n");
-	    return 4;
+		printf("WriteOptionBuffer: eprom_open failed.\n");
+		return 4;
 	}
 	
 	iRet = eeprom_write_buf(start, iLen, pBuff);	
@@ -1334,7 +1334,7 @@ int WriteOptionBufferIndex_40g(unsigned char *pBuff, int start,int iLen,int inde
 //  5;					//eeprom_read_buf failed
 //  6;					//ind2usbpath failed
 //  7;					//read the path to szNetifPath failed
-//  8;          				//opendir szNetifPath failed
+//  8;		  				//opendir szNetifPath failed
 //  9;					//read interface name to szNetifName failed
 //  10;					//fill returning values failed
 //  11;					//g_szArg_netif is empty or NULL
@@ -1440,10 +1440,10 @@ int WriteModuleBuf(PMODULEINFO pModuleInfo,unsigned char *pBuff)
 //读取MAC地址
 int ReadMAC(unsigned char *pMac)
 {
-    int  iRet   = 0;
+	int  iRet   = 0;
 	if(NULL == pMac)
 	{
-	    	printf("ReadMAC: Mac = NULL\n");
+			printf("ReadMAC: Mac = NULL\n");
 		return NULL_POINTER_ERR;
 	}
 	
@@ -1451,16 +1451,16 @@ int ReadMAC(unsigned char *pMac)
 
 	iRet = ReadOptionBuffer(pMac,0,6);
 	
-    	return iRet;
+		return iRet;
 }
 
 //读取序列号
 int ReadSerialNumber(unsigned char *pSerialNumber)
 {
-    int  iRet   = 0;
+	int  iRet   = 0;
 	if(NULL == pSerialNumber)
 	{
-	    printf("ReadSerialNumber:pSerialNumber = NULL\n");
+		printf("ReadSerialNumber:pSerialNumber = NULL\n");
 		return NULL_POINTER_ERR;
 	}
 	
@@ -1468,7 +1468,7 @@ int ReadSerialNumber(unsigned char *pSerialNumber)
 	
 	iRet = ReadOptionBuffer(pSerialNumber,16,14);
 	
-    	return iRet;
+		return iRet;
 }
 
 int WriteMAC(unsigned char *pMac)
@@ -1486,17 +1486,17 @@ int WriteSerialNumber(unsigned char *pSerNo)
 /******************************************************************************
    Function : CalAscII
    Purpose  : Check if a password is right or not.
-   Input    : stOptTbl - the flash option serial code and user password.
-                           
+   Input	: stOptTbl - the flash option serial code and user password.
+						   
    Output   : none
    Return   : true - password is correct.
-              false- password is incorrect.
+			  false- password is incorrect.
    Reference: CalAscII
    Called by: none
 
-   1.Author      : Roman
-     Create Date : 2006-11-13
-     History     : Create function
+   1.Author	  : Roman
+	 Create Date : 2006-11-13
+	 History	 : Create function
   2,2012-06-15,jiang
   index : 索引,
 ******************************************************************************/
@@ -1525,17 +1525,17 @@ int WriteSerialNumber(unsigned char *pSerNo)
 		tmp = tmp % 62;
 
 		if (tmp < 26)
-              {
-                    password[i] = (UCHAR)(65 + tmp);
-              }
-              else if(tmp < 36)
-              {
-                    password[i] = (UCHAR)(22 + tmp);
-              }
-              else
-              {
-                    password[i] = (UCHAR)(61 + tmp);
-              }
+			  {
+					password[i] = (UCHAR)(65 + tmp);
+			  }
+			  else if(tmp < 36)
+			  {
+					password[i] = (UCHAR)(22 + tmp);
+			  }
+			  else
+			  {
+					password[i] = (UCHAR)(61 + tmp);
+			  }
 	}
 	
 	DebugPrintf("CheckPwd:calc pwd:%s, get from client pwd: %s, offset is:%d\n", password, stOptTbl.szPwd, stOptTbl.offset);
@@ -1545,7 +1545,7 @@ int WriteSerialNumber(unsigned char *pSerNo)
 	
 	if(memcmp(password, stOptTbl.szPwd, 8))
 	{
-	    return false;
+		return false;
 	}
 	
 	return true;
@@ -1830,64 +1830,64 @@ int WriteOptionBit(POPTIONINFO pOptionInfo)
 /******************************************************************************
    Function : WriteMemory
    Purpose  : Write data to the physical memory address, and report the result
-   Input    : pstMemData - get the physical address, length and data to write
+   Input	: pstMemData - get the physical address, length and data to write
    Output   : none
    Return   : 0 - success
-              others - fail
+			  others - fail
    Reference: GetVirtualMemory
    Called   : DealTcpSvrData
 
-   1.Author      : cjiang
-     Create Date : 2012-05-23
-     History     : Create function
+   1.Author	  : cjiang
+	 Create Date : 2012-05-23
+	 History	 : Create function
 ******************************************************************************/
 int WriteMemory(MEMDATA *pstMemData)
 {
-    ULONG ulAddr = 0;
-    ULONG ulLen  = 0;
-    ULONG ulCount= 0;
-    UCHAR *pVirAdd = NULL;    
-    
-    if( NULL == pstMemData )
-    {
-        return NULL_POINTER_ERR;
-    }
+	ULONG ulAddr = 0;
+	ULONG ulLen  = 0;
+	ULONG ulCount= 0;
+	UCHAR *pVirAdd = NULL;	
+	
+	if( NULL == pstMemData )
+	{
+		return NULL_POINTER_ERR;
+	}
 
-    ulAddr = pstMemData->stMemInfo.ulStartAddr;
-    ulLen  = pstMemData->stMemInfo.ulLength;
-    //ulAddr = ntohl(pstMemData->stMemInfo.ulStartAddr);
-    //ulLen  = ntohl(pstMemData->stMemInfo.ulLength);
-    
-    if( 0 == ulLen || ulLen > MAX_MEM_LEN )
-    {
-        return INVALID_ARG_ERR;
-    }
+	ulAddr = pstMemData->stMemInfo.ulStartAddr;
+	ulLen  = pstMemData->stMemInfo.ulLength;
+	//ulAddr = ntohl(pstMemData->stMemInfo.ulStartAddr);
+	//ulLen  = ntohl(pstMemData->stMemInfo.ulLength);
+	
+	if( 0 == ulLen || ulLen > MAX_MEM_LEN )
+	{
+		return INVALID_ARG_ERR;
+	}
 
-    if( MIN_PHY_ADDR > ulAddr )
-    {
-        return INVALID_PHY_ADD;
-    }
+	if( MIN_PHY_ADDR > ulAddr )
+	{
+		return INVALID_PHY_ADD;
+	}
 
-    DebugPrintf("WriteMemory: yAddr:[0x%x], length:%d\n", ulAddr, ulLen);
+	DebugPrintf("WriteMemory: yAddr:[0x%x], length:%d\n", ulAddr, ulLen);
 	
 	pVirAdd = (UCHAR *)(pstMemData->stMemInfo.ulStartAddr);
-    //pVirAdd = (UCHAR *)GetVirtualMemory( (void *)ulAddr, NULL );
-    //bugPrintf("VirtAddr:[0x%x], length:%d\n", pVirAdd, ulLen);
+	//pVirAdd = (UCHAR *)GetVirtualMemory( (void *)ulAddr, NULL );
+	//bugPrintf("VirtAddr:[0x%x], length:%d\n", pVirAdd, ulLen);
    
 	//bugPrintf("Writing into memory...\n");
-    for( ulCount = 0; ulCount < ulLen; ulCount++ )
-    {
+	for( ulCount = 0; ulCount < ulLen; ulCount++ )
+	{
 		*pVirAdd = pstMemData->pucBuf[ulCount];
 		//bugPrintf("0x%03x:0x%02x,0x%02x ", ulCount, pstMemData->pucBuf[ulCount], *pVirAdd);
-        	if( 0 == (ulCount +1) % 10 )
-	        {
-	        	//bugPrintf("\n");
-	        }
-        pVirAdd++;
-    }
+			if( 0 == (ulCount +1) % 10 )
+			{
+				//bugPrintf("\n");
+			}
+		pVirAdd++;
+	}
 
-    DebugPrintf("WriteMemory: Writing into memory finished.\n");   
-    sleep(1);
+	DebugPrintf("WriteMemory: Writing into memory finished.\n");   
+	sleep(1);
 
 	return 0;
 }
@@ -1895,132 +1895,132 @@ int WriteMemory(MEMDATA *pstMemData)
 /******************************************************************************
    Function : ReadMemory
    Purpose  : Read data from the physical memory address, and report the result
-   Input    : stMemInfo - get the physical memory address and length to read
+   Input	: stMemInfo - get the physical memory address and length to read
    Output   : pstMemData
    Return   : 0 - success
-              others - fail
+			  others - fail
    Reference: GetVirtualMemory
    Called   : DealTcpSvrData
    
-   1.Author      : cjiang
-     Create Date : 2012-05-23
-     History     : Create function
+   1.Author	  : cjiang
+	 Create Date : 2012-05-23
+	 History	 : Create function
 ******************************************************************************/
 int ReadMemory(MEMDATA *pstMemData)
 {
-    UCHAR *pVirAdd = NULL;
-    ULONG ulCount = 0;
-    extern bool g_IsDbg;
+	UCHAR *pVirAdd = NULL;
+	ULONG ulCount = 0;
+	extern bool g_IsDbg;
 
-    if(NULL == pstMemData)
-    {
-        return NULL_POINTER_ERR;
-    }
+	if(NULL == pstMemData)
+	{
+		return NULL_POINTER_ERR;
+	}
 
 	//pstMemData->stMemInfo.ulLength = ntohl(pstMemData->stMemInfo.ulLength);
  //   pstMemData->stMemInfo.ulStartAddr = ntohl(pstMemData->stMemInfo.ulStartAddr);
-    DebugPrintf("ReadMemory: %d, addr:0x%x\n", pstMemData->stMemInfo.ulLength, pstMemData->stMemInfo.ulStartAddr);
-    if(0 == pstMemData->stMemInfo.ulLength || pstMemData->stMemInfo.ulLength > MAX_MEM_LEN )
-    {
-        return INVALID_ARG_ERR;
-    }
+	DebugPrintf("ReadMemory: %d, addr:0x%x\n", pstMemData->stMemInfo.ulLength, pstMemData->stMemInfo.ulStartAddr);
+	if(0 == pstMemData->stMemInfo.ulLength || pstMemData->stMemInfo.ulLength > MAX_MEM_LEN )
+	{
+		return INVALID_ARG_ERR;
+	}
 
-    if( MIN_PHY_ADDR > pstMemData->stMemInfo.ulStartAddr )
-    {
-        return INVALID_PHY_ADD;
-    }
+	if( MIN_PHY_ADDR > pstMemData->stMemInfo.ulStartAddr )
+	{
+		return INVALID_PHY_ADD;
+	}
 
 	pVirAdd = (UCHAR *)(pstMemData->stMemInfo.ulStartAddr);
-    //pVirAdd = (UCHAR *)GetVirtualMemory( (void *)pstMemData->stMemInfo.ulStartAddr, NULL );
-    DebugPrintf("ReadMemory: PhyAddr:[0x%x], VirtAddr:[0x%x], length:%d\n", pstMemData->stMemInfo.ulStartAddr, pVirAdd, pstMemData->stMemInfo.ulLength);
+	//pVirAdd = (UCHAR *)GetVirtualMemory( (void *)pstMemData->stMemInfo.ulStartAddr, NULL );
+	DebugPrintf("ReadMemory: PhyAddr:[0x%x], VirtAddr:[0x%x], length:%d\n", pstMemData->stMemInfo.ulStartAddr, pVirAdd, pstMemData->stMemInfo.ulLength);
    
-    DebugPrintf("ReadMemory: Reading from memory...\n");
-    for( ulCount = 0; ulCount < pstMemData->stMemInfo.ulLength; ulCount++ )
-    {
-        pstMemData->pucBuf[ulCount] = *pVirAdd;
+	DebugPrintf("ReadMemory: Reading from memory...\n");
+	for( ulCount = 0; ulCount < pstMemData->stMemInfo.ulLength; ulCount++ )
+	{
+		pstMemData->pucBuf[ulCount] = *pVirAdd;
 
 		if( true == g_IsDbg )
-        {
-        	DebugPrintf("0x%03x:0x%02x ", ulCount, *pVirAdd);
-        	if( 0 == (ulCount +1) % 10 )
-	        {
-	        	DebugPrintf("\n");
-	        }
-        }        
-        pVirAdd++;
-    }
-    
-    DebugPrintf("\nReadMemory: Reading finished.len:%d\n", ulCount);    
+		{
+			DebugPrintf("0x%03x:0x%02x ", ulCount, *pVirAdd);
+			if( 0 == (ulCount +1) % 10 )
+			{
+				DebugPrintf("\n");
+			}
+		}		
+		pVirAdd++;
+	}
+	
+	DebugPrintf("\nReadMemory: Reading finished.len:%d\n", ulCount);	
 
-    pstMemData->stMemInfo.ulLength = ulCount;
-    pstMemData->stMemInfo.ulStartAddr = pstMemData->stMemInfo.ulStartAddr;
-    
-    return 0;
+	pstMemData->stMemInfo.ulLength = ulCount;
+	pstMemData->stMemInfo.ulStartAddr = pstMemData->stMemInfo.ulStartAddr;
+	
+	return 0;
 }
 
 int FindAllSN()
 {
-    int ret, i;
-    struct ftdi_context ftdic;
-    struct ftdi_device_list *devlist, *curdev;
-    char manufacturer[128], description[128], serialno[128];
+	int ret, i;
+	struct ftdi_context ftdic;
+	struct ftdi_device_list *devlist, *curdev;
+	char manufacturer[128], description[128], serialno[128];
 
-    if (ftdi_init(&ftdic) < 0)
-    {
-        fprintf(stderr, "FindAllSN: ftdi_init failed\n");
-        return 1;
-    }
+	if (ftdi_init(&ftdic) < 0)
+	{
+		fprintf(stderr, "FindAllSN: ftdi_init failed\n");
+		return 1;
+	}
 
-    if ((ret = ftdi_usb_find_all(&ftdic, &devlist, 0x0403, 0x6010)) < 0)
-    {
-        fprintf(stderr, "FindAllSN: ftdi_usb_find_all failed: %d (%s)\n", ret, ftdi_get_error_string(&ftdic));
-        return 2;
-    }
+	if ((ret = ftdi_usb_find_all(&ftdic, &devlist, 0x0403, 0x6010)) < 0)
+	{
+		fprintf(stderr, "FindAllSN: ftdi_usb_find_all failed: %d (%s)\n", ret, ftdi_get_error_string(&ftdic));
+		return 2;
+	}
 
-    printf("FindAllSN: Number of FTDI devices found: %d\n", ret);
+	printf("FindAllSN: Number of FTDI devices found: %d\n", ret);
 
-    i = 0;
+	i = 0;
 	bool bIsTest = false;
-    for (curdev = devlist; curdev != NULL; i++)
-    {
-        printf("FindAllSN: Checking device: %d\n", i);
-        if ((ret = ftdi_usb_get_strings(&ftdic, curdev->dev, manufacturer, 128, description, 128, serialno, 128)) < 0)
-        {
-            fprintf(stderr, "FindAllSN: ftdi_usb_get_strings failed: %d (%s)\n", ret, ftdi_get_error_string(&ftdic));
-            return 3;
-        }
-        printf("FindAllSN: Manufacturer: %s, Description: %s, Serial number: %s\n\n", manufacturer, description, serialno);
+	for (curdev = devlist; curdev != NULL; i++)
+	{
+		printf("FindAllSN: Checking device: %d\n", i);
+		if ((ret = ftdi_usb_get_strings(&ftdic, curdev->dev, manufacturer, 128, description, 128, serialno, 128)) < 0)
+		{
+			fprintf(stderr, "FindAllSN: ftdi_usb_get_strings failed: %d (%s)\n", ret, ftdi_get_error_string(&ftdic));
+			return 3;
+		}
+		printf("FindAllSN: Manufacturer: %s, Description: %s, Serial number: %s\n\n", manufacturer, description, serialno);
 	 if(!bIsTest)
 	 {
 	 	memcpy(testSN,serialno,strlen(serialno));
 		bIsTest = true;
 	 }
-        curdev = curdev->next;
-    }
+		curdev = curdev->next;
+	}
 
-    ftdi_list_free(&devlist);
-    ftdi_deinit(&ftdic);
+	ftdi_list_free(&devlist);
+	ftdi_deinit(&ftdic);
 
-    return 0;
+	return 0;
 }
 
 //供外部程序调用,启动监听服务
 bool StartCommonServer()
 {
-    DebugPrintf("Into StartCommonServer...\n");
+	DebugPrintf("Into StartCommonServer...\n");
 	
 	StopAll = false;
-    if(threadHandleBroadcastListen != 0)
-    {
+	if(threadHandleBroadcastListen != 0)
+	{
 		DebugPrintf("StartCommonServer: readHandleBroadcastListen exit...:StartCommonServer\n");
 		pthread_exit( &threadHandleBroadcastListen );
-    }
+	}
  	
-    if(threadHandleListen != 0)
-    {
+	if(threadHandleListen != 0)
+	{
 		DebugPrintf("StartCommonServer: threadHandleListen exit...:StartCommonServer\n");
 		pthread_exit( &threadHandleListen );
-    }
+	}
 
 	return ((!pthread_create(&threadHandleBroadcastListen, NULL, BeginMySocketBroadcastListen, NULL)) && (!pthread_create(&threadHandleListen, NULL, BeginMySocketListen, NULL)));
 }
@@ -2028,7 +2028,7 @@ bool StartCommonServer()
 //供外部程序调用,停止监听服务
 void StopCommonServer()
 {
-    DebugPrintf("Into StopCommonServer...\n");
+	DebugPrintf("Into StopCommonServer...\n");
 	
 	StopAll = true;
 

@@ -8,7 +8,6 @@ prebuild:
 #no need prepare.
 
 CFLAGS += -fPIC -I../../../include -I../include -I./
-CFLAGS += -I$(HOME)/v400-build/v400-buildroot/include
 
 $(TARGET):$(OBJ_FILES)
 	$(LINK_INCREMENT)

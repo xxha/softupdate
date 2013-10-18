@@ -31,7 +31,7 @@ void* ReceiveThread(void * para)
 
 	unsigned int	type;
 	unsigned int	datalength;
-	unsigned int    readlength;
+	unsigned int	readlength;
 
 	FrameHeader*	header;
 	unsigned char*	md5hashcode;
@@ -261,7 +261,7 @@ ClientBase::ClientBase()
 	pthread_mutex_init(&_send_obj, null);
 	pthread_mutex_init(&_receive_obj, null);
 	
-    pthread_mutex_init(&_cond_obj, null);
+	pthread_mutex_init(&_cond_obj, null);
 	pthread_mutex_init(&_cond_exit_obj, null);
 	pthread_mutex_init(&_cond_connect_obj, null);
 	pthread_mutex_init(&_cond_receive_obj, null);
@@ -468,20 +468,20 @@ int ClientBase::SetSocket(Socket hNewSocket)
 		}		
 	}	
 	
-    _socket = hNewSocket;
+	_socket = hNewSocket;
 	//set buffer
 	int rev_buff_size = RECEIVE_BUFFER_SIZE;
 	if(setsockopt(_socket, SOL_SOCKET, SO_RCVBUF, (const char*)&rev_buff_size, sizeof(int)))
-    {
-        printf("ClientBase: Set socket receive buffer failed.\n");
+	{
+		printf("ClientBase: Set socket receive buffer failed.\n");
 		return SET_SOCKET_OPT_FAILED;
-    }
+	}
 	int snd_buff_size = SEND_BUFFER_SIZE;
 	if(setsockopt(_socket, SOL_SOCKET, SO_SNDBUF, (const char*)&snd_buff_size, sizeof(int)))
-    {
-        printf("ClientBase: Set socket send buffer failed.\n");
+	{
+		printf("ClientBase: Set socket send buffer failed.\n");
 		return SET_SOCKET_OPT_FAILED;
-    }
+	}
 	//set keepalive
 	int keepalive = 1;
 	int keepidle = KEEPALIVE_IDLE;
@@ -492,6 +492,7 @@ int ClientBase::SetSocket(Socket hNewSocket)
 		printf("ClientBase: Set socket keepalive failed.\n");
 		return SET_SOCKET_OPT_FAILED;
 	}
+/*
 	if(setsockopt(_socket, SOL_TCP, TCP_KEEPIDLE, (const char*)&keepidle, sizeof(int)))
 	{
 		printf("ClientBase: Set socket keepalive idle failed.\n");
@@ -507,21 +508,21 @@ int ClientBase::SetSocket(Socket hNewSocket)
 		printf("ClientBase: Set socket keepalive count failed.\n");
 		return SET_SOCKET_OPT_FAILED;
 	}
-	
-    //set socket to blocking mode
-    int flags; 
+*/	
+	//set socket to blocking mode
+	int flags; 
 	if ((flags = fcntl(_socket, F_GETFL, 0)) < 0) 
 	{ 
-    	printf("ClientBase: Read socket flag failed.\n");
+		printf("ClientBase: Read socket flag failed.\n");
 		return SET_SOCKET_OPT_FAILED;
 	} 
 	if (fcntl(_socket, F_SETFL, flags & (~O_NONBLOCK)) < 0) 
 	{ 
-    	printf("ClientBase: Set socket blocking mode failed.\n");
+		printf("ClientBase: Set socket blocking mode failed.\n");
 		return SET_SOCKET_OPT_FAILED;
 	} 
 
-    SetKeepReceiving(true);
+	SetKeepReceiving(true);
 	//begin receive
 	ret = pthread_create(&(_receive_thread), null, ReceiveThread, this);
 	if(0 != ret)
@@ -533,7 +534,7 @@ int ClientBase::SetSocket(Socket hNewSocket)
 		return CREATE_THREAD_FAILED;
 	}
 	
-    return 0;
+	return 0;
 }
 
 //get socket of client
@@ -574,22 +575,22 @@ bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char
 	//set buffer
 	int rev_buff_size = RECEIVE_BUFFER_SIZE;
 	if(setsockopt(_socket, SOL_SOCKET, SO_RCVBUF, (const char*)&rev_buff_size, sizeof(int)))
-       {
-              printf("ClientBase: Set socket receive buffer failed.\n");
+	   {
+			  printf("ClientBase: Set socket receive buffer failed.\n");
 		close(_socket);
 		_socket = INVALID_SOCKET;
 		SetIsConnecting(false);
 		return false;
-       }
+	   }
 	int snd_buff_size = SEND_BUFFER_SIZE;
 	if(setsockopt(_socket, SOL_SOCKET, SO_SNDBUF, (const char*)&snd_buff_size, sizeof(int)))
-       {
-              printf("ClientBase: Set socket send buffer failed.\n");
+	   {
+			  printf("ClientBase: Set socket send buffer failed.\n");
 		close(_socket);
 		_socket = INVALID_SOCKET;
 		SetIsConnecting(false);
 		return false;
-       }
+	   }
 
 	/* bind to device */
 	if(setsockopt(_socket, SOL_SOCKET, SO_BINDTODEVICE, device, strlen(device)))
@@ -614,7 +615,7 @@ bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char
 		SetIsConnecting(false);
 		return false;
 	}
-	if(setsockopt(_socket, SOL_TCP, TCP_KEEPIDLE, (const char*)&keepidle, sizeof(int)))
+/*	if(setsockopt(_socket, SOL_TCP, TCP_KEEPIDLE, (const char*)&keepidle, sizeof(int)))
 	{
 		printf("ClientBase: Set socket keepalive idle failed.\n");
 		close(_socket);
@@ -638,13 +639,13 @@ bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char
 		SetIsConnecting(false);
 		return false;
 	}
-
+*/
 	struct sockaddr_in   serveraddr;
 	//fill serveraddr
 	bzero(&serveraddr, sizeof(sockaddr_in));
 	serveraddr.sin_family = AF_INET;
-    	serveraddr.sin_addr.s_addr = inet_addr(IPAddress);
-    	serveraddr.sin_port = htons(port);
+		serveraddr.sin_addr.s_addr = inet_addr(IPAddress);
+		serveraddr.sin_port = htons(port);
 		
 	int flags; 
 	//set socket to non-blocking mode
@@ -696,11 +697,11 @@ bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char
 			return false;
 		}
 	}
-    
+	
 	//set socket to blocking mode
 	if ((flags = fcntl(_socket, F_GETFL, 0)) < 0) 
 	{ 
-    	printf("ClientBase: Connect succeeded, but read socket flag failed.\n");
+		printf("ClientBase: Connect succeeded, but read socket flag failed.\n");
 		close(_socket);
 		_socket = INVALID_SOCKET;
 		SetIsConnecting(false);
@@ -708,7 +709,7 @@ bool ClientBase::Connect(const char * IPAddress, unsigned short port, const char
 	} 
 	if (fcntl(_socket, F_SETFL, flags & (~O_NONBLOCK)) < 0) 
 	{ 
-    	printf("ClientBase: Set socket blocking mode failed.\n");
+		printf("ClientBase: Set socket blocking mode failed.\n");
 		close(_socket);
 		_socket = INVALID_SOCKET;
 		SetIsConnecting(false);
